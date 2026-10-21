@@ -1,0 +1,41 @@
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library@1.0.1/build/nn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-machine-learning@0.1.0/src/nn-prompt.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/STCisGOOD/rondo-practice@v1/rondo-practice.js"></script>
+<script>
+  // Practice mode answers from answers recorded from a real Rondo.
+  // With Rondo running on this laptop, uncomment the next line to ask your own files:
+  // RondoPractice.live = true
+
+  let input, output
+
+  function setup () {
+    input = nn.create('input')
+      .set({ placeholder: 'ask the library anything' })
+      .addTo('body')
+
+    nn.create('button')
+      .content('send')
+      .addTo('body')
+      .on('click', send)
+
+    output = nn.create('p').addTo('body')
+  }
+
+  async function send () {
+    output.content('...thinking...')
+
+    const reply = await nn.prompt({
+      provider: 'generic',
+      url: 'http://localhost:7778/v1/chat/completions',
+      model: 'rondo',            // 'rondo-model' asks the AI model alone, without your files
+      message: input.value
+    })
+
+    // reply.text is Rondo's answer (or its plain reason when it couldn't answer)
+    // reply.raw.rondo has everything else: the quoted passages, their files, and more
+    console.log(reply)
+    output.content(reply.text)
+  }
+
+  nn.on('load', setup)
+</script>

@@ -1,0 +1,37 @@
+<style>
+  body { font-family: sans-serif; margin: 2em; }
+  .columns { display: flex; gap: 2em; }
+  .column { flex: 1; border: 2px solid #222; padding: 1em; border-radius: 8px; }
+  .column h3 { margin-top: 0; }
+  .files { background: #eef7ff; }
+  .model { background: #fff3ee; }
+</style>
+
+<input id="question" placeholder="ask both" size="50">
+<button id="ask">ask</button>
+<div class="columns">
+  <div class="column files"><h3>From the library</h3><p id="files"></p></div>
+  <div class="column model"><h3>From the AI model alone</h3><p id="model"></p></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/STCisGOOD/rondo-practice@v1/rondo-practice.js"></script>
+<script>
+  // RondoPractice.live = true   // uncomment to ask the Rondo running on this laptop
+
+  // The same question, twice: once answered from the files (with sources), once by the AI
+  // model from its training alone. What changes? What can you check, and what can't you?
+  async function ask (path, where) {
+    where.textContent = '...thinking...'
+    const res = await fetch('http://localhost:7778' + path, {
+      method: 'POST',
+      body: JSON.stringify({ question: document.querySelector('#question').value })
+    })
+    const data = await res.json()
+    where.textContent = data.ok ? data.answer : (data.message || data.error)
+  }
+
+  document.querySelector('#ask').onclick = () => {
+    ask('/ask', document.querySelector('#files'))
+    ask('/ask-model', document.querySelector('#model'))
+  }
+</script>

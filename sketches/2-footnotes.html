@@ -1,0 +1,64 @@
+<style>
+  body { font-family: Georgia, serif; max-width: 42em; margin: 2em auto; line-height: 1.5; }
+  sup button { border: none; background: #ffd84d; border-radius: 3px; cursor: pointer; font-size: 0.7em; }
+  .note { font-size: 0.9em; border-left: 3px solid #ffd84d; padding-left: 0.8em; margin: 0.6em 0; }
+  .file { color: #777; font-style: italic; }
+</style>
+
+<input id="question" placeholder="ask the library" size="40">
+<button id="ask">ask</button>
+<div id="answer"></div>
+<div id="notes"></div>
+
+<script src="https://cdn.jsdelivr.net/gh/STCisGOOD/rondo-practice@v1/rondo-practice.js"></script>
+<script>
+  // RondoPractice.live = true   // uncomment to ask the Rondo running on this laptop
+
+  // Rondo marks each claim with a tag like [D:5d7c91d3...]. Each tag matches one item in
+  // "evidence": the exact words it came from, and the file. Here every tag becomes a footnote.
+  document.querySelector('#ask').onclick = async () => {
+    const question = document.querySelector('#question').value
+    document.querySelector('#answer').textContent = '...thinking...'
+    document.querySelector('#notes').innerHTML = ''
+
+    const res = await fetch('http://localhost:7778/ask', {
+      method: 'POST',
+      body: JSON.stringify({ question })
+    })
+    const data = await res.json()
+    if (!data.ok) {
+      document.querySelector('#answer').textContent = data.message
+      return
+    }
+
+    const numbers = {}
+    let count = 0
+    const answer = document.querySelector('#answer')
+    answer.innerHTML = ''
+    // split the answer around its tags, keeping the tags
+    for (const piece of data.answer.split(/(\[[DEF]:[0-9a-f]+\])/)) {
+      const found = data.evidence.find(e => e.tag === piece)
+      if (!found) { answer.append(piece); continue }
+      if (!numbers[piece]) numbers[piece] = ++count
+      const sup = document.createElement('sup')
+      const button = document.createElement('button')
+      button.textContent = numbers[piece]
+      button.onclick = () => showNote(numbers[piece], found)
+      sup.append(button)
+      answer.append(sup)
+    }
+  }
+
+  // textContent, not innerHTML: the words come from files, and a file could contain HTML
+  function showNote (n, evidence) {
+    const note = document.createElement('div')
+    note.className = 'note'
+    const number = document.createElement('b')
+    number.textContent = n + '. '
+    const file = document.createElement('span')
+    file.className = 'file'
+    file.textContent = ' ' + evidence.file
+    note.append(number, '“' + evidence.quote + '”', file)
+    document.querySelector('#notes').append(note)
+  }
+</script>

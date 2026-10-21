@@ -1,0 +1,39 @@
+<style>
+  body { font-family: sans-serif; margin: 2em; background: #111; color: #eee; }
+  #cards { display: flex; flex-wrap: wrap; gap: 1em; margin-top: 1em; }
+  .card { width: 14em; padding: 1em; border-radius: 10px; background: #2a2a40; }
+  .card b { color: #ffd84d; }
+  .card small { display: block; margin-top: 0.6em; color: #999; }
+</style>
+
+<input id="words" placeholder="a word, like machine" size="30">
+<button id="go">search</button>
+<div id="cards"></div>
+
+<script src="https://cdn.jsdelivr.net/gh/STCisGOOD/rondo-practice@v1/rondo-practice.js"></script>
+<script>
+  // RondoPractice.live = true   // uncomment to search the Rondo running on this laptop
+
+  // No chat box at all: Rondo's search returns the claims it found in the files, as
+  // subject - relation - object, with the words it read them from. Here each one is a card.
+  document.querySelector('#go').onclick = async () => {
+    const words = document.querySelector('#words').value
+    const res = await fetch('http://localhost:7778/search?q=' + encodeURIComponent(words))
+    const data = await res.json()
+    const cards = document.querySelector('#cards')
+    cards.innerHTML = ''
+    // textContent, not innerHTML: the words come from files, and a file could contain HTML
+    for (const claim of data.results || []) {
+      const card = document.createElement('div')
+      card.className = 'card'
+      const subject = document.createElement('b')
+      subject.textContent = claim.subject
+      const object = document.createElement('b')
+      object.textContent = claim.object
+      const source = document.createElement('small')
+      source.textContent = '“' + claim.quote + '” ' + claim.file
+      card.append(subject, ' ' + claim.relation + ' ', object, source)
+      cards.append(card)
+    }
+  }
+</script>
