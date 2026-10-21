@@ -1,0 +1,2737 @@
+{
+ "schema": "rondo.practice-pack.v1",
+ "project": "Workshop",
+ "recorded_with": {
+  "rondo_commit": "2c57f4e",
+  "recorded_utc": "2026-10-21T18:48:05Z"
+ },
+ "info": {
+  "endpoints": {
+   "GET /search?q=...": "matching notes and passages from this project",
+   "GET /v1/models": "the two model names",
+   "POST /ask": "{\"question\": \"...\"}: Rondo's own answer from this project's files, with its evidence (the same as /ask-rondo)",
+   "POST /ask-model": "{\"question\": \"...\"}: the local model alone; nothing from the project goes in",
+   "POST /ask-rondo": "{\"question\": \"...\"}",
+   "POST /feedback": "{\"token\": \"...\", \"correct\": true|false}: right or wrong on an answer this session gave",
+   "POST /v1/chat/completions": "OpenAI chat shape: {\"model\": \"rondo\" | \"rondo-model\", \"messages\": [...]}; the text is choices[0].message.content"
+  },
+  "name": "Rondo local API",
+  "ok": true,
+  "project": "Workshop",
+  "version": 1
+ },
+ "library": [
+  {
+   "file": "frankenstein.txt",
+   "title": "Frankenstein; or, The Modern Prometheus, by Mary Wollstonecraft Shelley",
+   "source": "Project Gutenberg eBook #84, https://www.gutenberg.org/ebooks/84",
+   "license": "Public domain. Project Gutenberg header and license text removed."
+  },
+  {
+   "file": "erewhon-book-of-the-machines.txt",
+   "title": "The Book of the Machines (Erewhon, chapters XXIII to XXV), by Samuel Butler",
+   "source": "Project Gutenberg eBook #1906, https://www.gutenberg.org/ebooks/1906",
+   "license": "Public domain. Chapters XXIII to XXV only; Project Gutenberg header and license text removed."
+  },
+  {
+   "file": "poe-maelzels-chess-player.txt",
+   "title": "Maelzel's Chess-Player, by Edgar Allan Poe (1836)",
+   "source": "Wikisource, https://en.wikisource.org/wiki/Maelzel%27s_Chess-Player",
+   "license": "Public domain. Wiki markup removed."
+  },
+  {
+   "file": "wikipedia-ada-lovelace.txt",
+   "title": "Ada Lovelace (from Wikipedia)",
+   "source": "https://en.wikipedia.org/w/index.php?title=Ada_Lovelace&oldid=1381003492",
+   "license": "Wikipedia contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plain-text extract; reference sections removed. Share-alike: copies keep this license."
+  },
+  {
+   "file": "wikipedia-analytical-engine.txt",
+   "title": "Analytical engine (from Wikipedia)",
+   "source": "https://en.wikipedia.org/w/index.php?title=Analytical_Engine&oldid=1362884716",
+   "license": "Wikipedia contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plain-text extract; reference sections removed. Share-alike: copies keep this license."
+  },
+  {
+   "file": "wikipedia-mechanical-turk.txt",
+   "title": "Mechanical Turk (from Wikipedia)",
+   "source": "https://en.wikipedia.org/w/index.php?title=Mechanical_Turk&oldid=1376154564",
+   "license": "Wikipedia contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plain-text extract; reference sections removed. Share-alike: copies keep this license."
+  },
+  {
+   "file": "wikipedia-large-language-model.txt",
+   "title": "Large language model (from Wikipedia)",
+   "source": "https://en.wikipedia.org/w/index.php?title=Large_language_model&oldid=1381303764",
+   "license": "Wikipedia contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plain-text extract; reference sections removed. Share-alike: copies keep this license."
+  },
+  {
+   "file": "wikipedia-user-interface-design.txt",
+   "title": "User interface design (from Wikipedia)",
+   "source": "https://en.wikipedia.org/w/index.php?title=User_interface_design&oldid=1367487509",
+   "license": "Wikipedia contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plain-text extract; reference sections removed. Share-alike: copies keep this license."
+  },
+  {
+   "file": "wikipedia-free-and-open-source-software.txt",
+   "title": "Free and open-source software (from Wikipedia)",
+   "source": "https://en.wikipedia.org/w/index.php?title=Free_and_open-source_software&oldid=1380880051",
+   "license": "Wikipedia contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plain-text extract; reference sections removed. Share-alike: copies keep this license."
+  }
+ ],
+ "ask": [
+  {
+   "question": "Who was Ada Lovelace?",
+   "seconds": 7.2,
+   "response": {
+    "answer": "She is often considered the first computer programmer and recognized the machine's potential for applications beyond pure calculation [D:6533aa7966c10ffc].",
+    "evidence": [
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "tag": "[E:5006c3bda393564e]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "tag": "[E:5bf92f5d65fa80bc]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "tag": "[E:af16e1703ac5fd6e]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "tag": "[E:84a9a4bed72a7213]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Lovelace often questioned basic assumptions through integrating poetry and science.",
+      "tag": "[E:48a94a229099b9b2]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 1,
+      "quote": "Ada Lovelace (from Wikipedia) Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 – 27 November 1852), also known as Ada Lovelace, was an English mathematician and writer chiefly known for work on Charles Babbage's proposed mechanical general-purpose computer, the analytical engine. She was the first to recognise the machine had applications beyond pure calculation. Lovelace is often considered the first computer programmer.",
+      "tag": "[D:a27d449ad4adf1ab]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 71,
+      "quote": "Symposium, University of Oxford, 13–14 October 2015. Ada.Ada.Ada, a one-woman show about the life and work of Ada Lovelace (using an LED dress), premiered at Edinburgh International Science Festival on 11 April 2015, and continued to touring internationally to promote diversity on STEM at technology conferences, businesses, government and educational organisations. Special exhibitions were displayed by the Science Museum in London, England",
+      "tag": "[D:bf3fbe932005a77f]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 59,
+      "quote": "equally profound or successful in both. Commemoration The computer language Ada, created on behalf of the United States Department of Defense, was named after Lovelace. The reference manual for the language was approved on 10 December 1980 and the Department of Defense Military Standard for the language, MIL-STD-1815, was given the number of the year of her birth. In 1981, the Association for Women in Computing inaugurated its Ada Lovelace",
+      "tag": "[D:6533aa7966c10ffc]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": 34,
+      "quote": "Charles Babbage and Ada Lovelace appear in an episode of Doctor Who, \"Spyfall Part 2\", where the engine is displayed and referenced.",
+      "tag": "[D:ee9d5c020dc53be4]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "tag": "[E:1bc1652a0067ccc0]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:49ccba350ee85612]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:247e499cf0e06022]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:99d36076425df390]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:e310b5f2d76f3845]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "He played a sweet mournful air which I perceived drew tears from the eyes of his amiable companion, of which the old man took",
+      "tag": "[E:e531f043113915ca]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "“I cannot describe to you the agony that these reflections inflicted upon me; I tried to dispel them, but sorrow only increased with knowledge.",
+      "tag": "[E:e4fba255be2b0741]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "Who was Ada Lovelace?"
+   }
+  },
+  {
+   "question": "What did Ada Lovelace write about the Analytical Engine?",
+   "seconds": 1.5,
+   "response": {
+    "answer": "Ada Lovelace wrote that the Analytical Engine might act upon other things besides numbers, were objects found whose mutual fundamental relations could be expressed [E:724ab98ad435947a]. She also recognized the machine's potential to process entities beyond quantities, envisioning its use in creative and scientific applications [D:a27d449ad4adf1ab].",
+    "evidence": [
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 1,
+      "quote": "Ada Lovelace (from Wikipedia) Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 – 27 November 1852), also known as Ada Lovelace, was an English mathematician and writer chiefly known for work on Charles Babbage's proposed mechanical general-purpose computer, the analytical engine. She was the first to recognise the machine had applications beyond pure calculation. Lovelace is often considered the first computer programmer.",
+      "tag": "[D:a27d449ad4adf1ab]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 42,
+      "quote": "never completed and so the program was never tested. In 1953, more than a century after her death, Ada Lovelace's notes on Babbage's Analytical Engine were republished as an appendix to B. V. Bowden's Faster than Thought: A Symposium on Digital Computing Machines. The engine has now been recognised as an early model for a computer and her notes as a description of a computer and software. Controversy over contribution Based on this work,",
+      "tag": "[D:d6fd0cc8219343ec]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and loops, and integrated memory, making it the first design for a general-purpose ",
+      "tag": "[E:8d76f76c12e1b397]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Sketch of the Analytical Engine: \"Mr.",
+      "tag": "[E:c844649381ff2e2d]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Influence Predicted influence Babbage understood that the existence of an automatic computer would kindle interest in the field now known as algorithmic efficiency, writing in his Passages from the Li",
+      "tag": "[E:065b8a9e99faa6e5]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The Mark I showed no influence from the analytical engine and lacked the analytical engine's most prescient architectural feature, conditional branching.",
+      "tag": "[E:f813cb48edfc3258]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "tag": "[E:5006c3bda393564e]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "tag": "[E:5bf92f5d65fa80bc]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Lovelace often questioned basic assumptions through integrating poetry and science.",
+      "tag": "[E:48a94a229099b9b2]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "tag": "[E:84a9a4bed72a7213]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "tag": "[E:af16e1703ac5fd6e]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 47,
+      "quote": "it, but agrees that she was the only person to see the potential of the analytical engine as a machine capable of expressing entities other than quantities. In his book, Idea Makers, Stephen Wolfram defends Lovelace's contributions. While acknowledging that Babbage wrote several unpublished algorithms for the Analytical Engine prior to Lovelace's notes, Wolfram argues that \"there's nothing as sophisticated—or as clean—as Ada's computation",
+      "tag": "[D:2d326663692441ff]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In her notes, she wrote: [The Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science o",
+      "tag": "[E:724ab98ad435947a]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "tag": "[E:cbf6d8fc90bde428]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "It is known beforehand how much strength must be given to these influences, just as it is known beforehand how much coal and water are necessary for the vapour-engine itself; and curiously enough it w",
+      "tag": "[E:7f1ab85ce836e912]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "tag": "[E:1bc1652a0067ccc0]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:e310b5f2d76f3845]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What did Ada Lovelace write about the Analytical Engine?"
+   }
+  },
+  {
+   "question": "Did Ada Lovelace think the Analytical Engine could be creative?",
+   "seconds": 1.7,
+   "response": {
+    "answer": "Yes, Ada Lovelace thought the Analytical Engine could be creative, as she wrote in her notes that \"[The Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed\" [E:724ab98ad435947a].",
+    "evidence": [
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 1,
+      "quote": "Ada Lovelace (from Wikipedia) Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 – 27 November 1852), also known as Ada Lovelace, was an English mathematician and writer chiefly known for work on Charles Babbage's proposed mechanical general-purpose computer, the analytical engine. She was the first to recognise the machine had applications beyond pure calculation. Lovelace is often considered the first computer programmer.",
+      "tag": "[D:a27d449ad4adf1ab]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 47,
+      "quote": "it, but agrees that she was the only person to see the potential of the analytical engine as a machine capable of expressing entities other than quantities. In his book, Idea Makers, Stephen Wolfram defends Lovelace's contributions. While acknowledging that Babbage wrote several unpublished algorithms for the Analytical Engine prior to Lovelace's notes, Wolfram argues that \"there's nothing as sophisticated—or as clean—as Ada's computation",
+      "tag": "[D:2d326663692441ff]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Sketch of the Analytical Engine: \"Mr.",
+      "tag": "[E:c844649381ff2e2d]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In her notes, she wrote: [The Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science o",
+      "tag": "[E:724ab98ad435947a]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 42,
+      "quote": "never completed and so the program was never tested. In 1953, more than a century after her death, Ada Lovelace's notes on Babbage's Analytical Engine were republished as an appendix to B. V. Bowden's Faster than Thought: A Symposium on Digital Computing Machines. The engine has now been recognised as an early model for a computer and her notes as a description of a computer and software. Controversy over contribution Based on this work,",
+      "tag": "[D:d6fd0cc8219343ec]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": 32,
+      "quote": "story follows Holmes as his program is implemented on modern computers and he is forced to compete against his nemesis yet again in the modern counterparts of Babbage's analytical engine. A similar setting to The Difference Engine is used by Sydney Padua in the webcomic The Thrilling Adventures of Lovelace and Babbage. It features an alternative history where Ada Lovelace and Babbage have built the analytical engine and use it to fight crime at",
+      "tag": "[D:35009514f5146c95]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "tag": "[E:5006c3bda393564e]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "I heard of the slothful Asiatics, of the stupendous genius and mental activity of",
+      "tag": "[E:62604e6b85072a8e]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "This pawn handicap created further interest in the Turk, and spawned a book by W.",
+      "tag": "[E:c01675c378b89379]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "EDIPT is a common acronym used to describe Kelley’s design thinking framework—it stands for empathize, define, ideate, prototype, and test.",
+      "tag": "[E:2cf5875e8b0399c7]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Lovelace often questioned basic assumptions through integrating poetry and science.",
+      "tag": "[E:48a94a229099b9b2]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "frame, the work of your own hands.",
+      "tag": "[E:c4c4781862b4587f]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "Felix and Agatha spent more time in amusement and conversation, and were assisted in their labours by servants.",
+      "tag": "[E:bb60597b011af2cf]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "Inspirited by this wind of promise, my daydreams become more fervent and vivid.",
+      "tag": "[E:a2c4ef48ccad5d1e]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "Our sum-engines never drop a figure, nor our looms a stitch; the machine is brisk",
+      "tag": "[E:2a3e7b19cff4d1f0]"
+     },
+     {
+      "file": "wikipedia-free-and-open-source-software.txt",
+      "passage": null,
+      "quote": "Version control systems such as Git are utilized to make code collaboration easier.",
+      "tag": "[E:3b83a0df93153731]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Results are often sensitive to the prompting method.",
+      "tag": "[E:9d2d1ceec4ad7ce6]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Although the Turk still occasionally gave performances – and for",
+      "tag": "[E:69ab49ee6fcfe735]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "Did Ada Lovelace think the Analytical Engine could be creative?"
+   }
+  },
+  {
+   "question": "What was the Analytical Engine?",
+   "seconds": 1.5,
+   "response": {
+    "answer": "The Analytical Engine was a proposed digital mechanical general-purpose computer designed by Charles Babbage, incorporating an arithmetic logic unit (ALU), control flow in the form of conditional branching and loops, and integrated memory, making it the first design for a general-purpose computer that could be described in modern terms as Turing-complete [E:8d76f76c12e1b397][D:3e912a7d78af9d34].",
+    "evidence": [
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and loops, and integrated memory, making it the first design for a general-purpose ",
+      "tag": "[E:8d76f76c12e1b397]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Sketch of the Analytical Engine: \"Mr.",
+      "tag": "[E:c844649381ff2e2d]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Influence Predicted influence Babbage understood that the existence of an automatic computer would kindle interest in the field now known as algorithmic efficiency, writing in his Passages from the Li",
+      "tag": "[E:065b8a9e99faa6e5]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The Mark I showed no influence from the analytical engine and lacked the analytical engine's most prescient architectural feature, conditional branching.",
+      "tag": "[E:f813cb48edfc3258]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In her notes, she wrote: [The Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science o",
+      "tag": "[E:724ab98ad435947a]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "tag": "[E:cbf6d8fc90bde428]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "It is known beforehand how much strength must be given to these influences, just as it is known beforehand how much coal and water are necessary for the vapour-engine itself; and curiously enough it w",
+      "tag": "[E:7f1ab85ce836e912]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "At first sight it would indeed appear that a vapour-engine cannot help going when set upon a line of rails with the steam up and the machinery in full play; whereas the man whose business it is to dri",
+      "tag": "[E:5a9fcb7e3fbfd56d]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“But I have heard it said, ‘granted that this is so, and that the vapour-engine has a strength of its own, surely no one will say that it has a will of its own?’ Alas!",
+      "tag": "[E:53fb98f3b7110509]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": 1,
+      "quote": "Analytical engine (from Wikipedia) The analytical engine was a proposed digital mechanical general-purpose computer designed by the English mathematician and computer pioneer Charles Babbage. It was first described in 1837 as the successor to Babbage's difference engine, which was a design for a simpler mechanical calculator. The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and",
+      "tag": "[D:3e912a7d78af9d34]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "tag": "[E:1bc1652a0067ccc0]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 85,
+      "quote": "978-0-912647-09-8. Menabrea, Luigi Federico; Lovelace, Ada (1843). \"Sketch of the Analytical Engine invented by Charles Babbage... with notes by the translator. Translated by Ada Lovelace\". In Richard Taylor (ed.). Scientific Memoirs. Vol. 3. London: Richard and John E. Taylor. pp. 666–731. Archived from the original on 29 May 2023. Also available on Wikisource: The Menebrea article, The notes by Ada Lovelace. Publication history Six copies",
+      "tag": "[D:5ef870559b03fc21]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 55,
+      "quote": "and Intelligence\" The objection is Lovelace's statement that: The Analytical Engine has no pretensions whatever to originate anything. It can do whatever we know how to order it to perform. It can follow analysis; but it has no power of anticipating any analytical relations or truths. This objection has been the subject of much debate and rebuttal, including in the paper that originally coined it. Distinction between mechanism and logical",
+      "tag": "[D:021eff94b8ae3f3b]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What was the Analytical Engine?"
+   }
+  },
+  {
+   "question": "Who designed the Analytical Engine?",
+   "seconds": 1.1,
+   "response": {
+    "answer": "The Analytical Engine was designed by the English mathematician and computer pioneer Charles Babbage [D:3e912a7d78af9d34].",
+    "evidence": [
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Influence Predicted influence Babbage understood that the existence of an automatic computer would kindle interest in the field now known as algorithmic efficiency, writing in his Passages from the Li",
+      "tag": "[E:065b8a9e99faa6e5]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and loops, and integrated memory, making it the first design for a general-purpose ",
+      "tag": "[E:8d76f76c12e1b397]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "Sketch of the Analytical Engine: \"Mr.",
+      "tag": "[E:c844649381ff2e2d]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In her notes, she wrote: [The Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science o",
+      "tag": "[E:6c32e3419a77c094]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In her notes, she wrote: [The Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science o",
+      "tag": "[E:724ab98ad435947a]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "tag": "[E:cbf6d8fc90bde428]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The Mark I showed no influence from the analytical engine and lacked the analytical engine's most prescient architectural feature, conditional branching.",
+      "tag": "[E:f813cb48edfc3258]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": 1,
+      "quote": "Analytical engine (from Wikipedia) The analytical engine was a proposed digital mechanical general-purpose computer designed by the English mathematician and computer pioneer Charles Babbage. It was first described in 1837 as the successor to Babbage's difference engine, which was a design for a simpler mechanical calculator. The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and",
+      "tag": "[D:3e912a7d78af9d34]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 52,
+      "quote": "make calculations.\" This insight is seen as significant by writers such as Betty Toole and Benjamin Woolley, as well as the programmer John Graham-Cumming, whose project Plan 28 has the aim of constructing the first complete Analytical Engine. According to the historian of computing and Babbage specialist Doron Swade: Ada saw something that Babbage in some sense failed to see. In Babbage's world his engines were bound by number...What Lovelace",
+      "tag": "[D:1de6aee3e83119b9]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": 85,
+      "quote": "978-0-912647-09-8. Menabrea, Luigi Federico; Lovelace, Ada (1843). \"Sketch of the Analytical Engine invented by Charles Babbage... with notes by the translator. Translated by Ada Lovelace\". In Richard Taylor (ed.). Scientific Memoirs. Vol. 3. London: Richard and John E. Taylor. pp. 666–731. Archived from the original on 29 May 2023. Also available on Wikisource: The Menebrea article, The notes by Ada Lovelace. Publication history Six copies",
+      "tag": "[D:5ef870559b03fc21]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "At first sight it would indeed appear that a vapour-engine cannot help going when set upon a line of rails with the steam up and the machinery in full play; whereas the man whose business it is to dri",
+      "tag": "[E:5a9fcb7e3fbfd56d]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“But I have heard it said, ‘granted that this is so, and that the vapour-engine has a strength of its own, surely no one will say that it has a will of its own?’ Alas!",
+      "tag": "[E:53fb98f3b7110509]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "It is known beforehand how much strength must be given to these influences, just as it is known beforehand how much coal and water are necessary for the vapour-engine itself; and curiously enough it w",
+      "tag": "[E:7f1ab85ce836e912]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "tag": "[E:1bc1652a0067ccc0]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "Who designed the Analytical Engine?"
+   }
+  },
+  {
+   "question": "What was the Mechanical Turk?",
+   "seconds": 1.4,
+   "response": {
+    "answer": "The Mechanical Turk was a chess-playing machine first displayed in 1770 that appeared to play chess autonomously, but in reality, its pieces were moved by a chess master hidden inside its lower cavity via levers and magnets [D:2d3a505974c92272].",
+    "evidence": [
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "de Kempelen, in which he considered a number of ways in which the Turk might be directed by Mälzel or another person outside it or by an operator within it.",
+      "tag": "[E:2eedc4d53a5d4c8e]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "de Kempelen, in which he considered a number of ways in which the Turk might be directed by Mälzel or another person outside it or by an operator within it.",
+      "tag": "[E:d93a8d1f25d9292b]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "By this time, frequent exhibition of the Turk and publication of numerous descriptions, however mistaken, of its workings and human agency, had reduced interest in it.",
+      "tag": "[E:82fea2243cd4e78f]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Although the Turk still occasionally gave performances – and for",
+      "tag": "[E:69ab49ee6fcfe735]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 1,
+      "quote": "Mechanical Turk (from Wikipedia) The Mechanical Turk (German: Schachtürke, lit. 'chess Turk'), also known as the Automaton Chess Player or simply the Turk (Hungarian: A Török), was a chess-playing machine first displayed in 1770, which appeared to be able to play a strong game of chess autonomously, but whose pieces were in reality moved via levers and magnets by a chess master hidden in its lower cavity. The machine was toured and exhibited",
+      "tag": "[D:2d3a505974c92272]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 78,
+      "quote": "strict Marxist historiography to the Mechanical Turk: \"one can imagine a philosophical counterpart to this device. The puppet called 'historical materialism' is to win all the time. It can easily be a match for anyone if it enlists the services of theology, which today, as we know, is wizened and has to keep out of sight.\" Jane Irwin's webcomic and later graphic novel Clockwork Game: The Illustrious Career of a Chess-Playing Automaton is based",
+      "tag": "[D:5670e43a6e2edea8]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 67,
+      "quote": "studies of the Turk. Bradley Ewart's Chess: Man vs. Machine (1980) discusses the Turk as well as other purported chess-playing automata. It was not until the creation of Deep Blue, IBM's computer that in 1997 defeated the world (human) champion, that interest increased again, and two more books devoted to the Turk were published: Gerald Levitt's The Turk, Chess Automaton and Tom Standage's The Turk. Legacy The Turk's popularity and mystery",
+      "tag": "[D:1927b2a8d92becf1]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In some cases, this can cause LLMs to support dangerous decisions and, given prolonged contact, draw users into delusional thinking.",
+      "tag": "[E:042917958a2fb1d3]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In addition to standard NLP benchmarks, LLMs have been evaluated as substitutes for human annotators.",
+      "tag": "[E:07c3b76e83254f1c]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "This technique, called few-shot prompting, allows LLMs to be adapted to any task without requiring fine-tuning.",
+      "tag": "[E:2b46b5e834576ee4]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Instruction fine-tuning is a form of supervised learning used to teach LLMs to follow user instructions.",
+      "tag": "[E:41eb3a57a843a2af]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Also in 2022, it was found that the base GPT-3 model can generate an instruction based on user input.",
+      "tag": "[E:ce72fbe1e5c30bb7]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "system for user control of looping in user programs.",
+      "tag": "[E:5ab2c41d4b208eeb]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“Thus civilisation and mechanical progress advanced hand in hand, each developing and being developed by the other, the earliest accidental use of the stick having set the ball rolling, and the prospe",
+      "tag": "[E:03ff7e77f6bde5fc]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": null,
+      "quote": "Nothing has been written on this topic which can be considered as decisive — and accordingly we find every where men of mechanical genius, of great general acuteness, and discriminative understanding,",
+      "tag": "[E:d4a60682ad2b92ca]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "This pawn handicap created further interest in the Turk, and spawned a book by W.",
+      "tag": "[E:c01675c378b89379]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What was the Mechanical Turk?"
+   }
+  },
+  {
+   "question": "How did the Mechanical Turk work?",
+   "seconds": 1.5,
+   "response": {
+    "answer": "The Mechanical Turk appeared to play chess autonomously, but in reality, its pieces were moved by a chess master hidden in its lower cavity using levers and magnets [D:2d3a505974c92272]. The machine also made clockwork sounds and could display facial expressions, and a voice box was added to allow it to say \"Échec!\" during games [D:b5cbd3434b6cdae1].",
+    "evidence": [
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 1,
+      "quote": "Mechanical Turk (from Wikipedia) The Mechanical Turk (German: Schachtürke, lit. 'chess Turk'), also known as the Automaton Chess Player or simply the Turk (Hungarian: A Török), was a chess-playing machine first displayed in 1770, which appeared to be able to play a strong game of chess autonomously, but whose pieces were in reality moved via levers and magnets by a chess master hidden in its lower cavity. The machine was toured and exhibited",
+      "tag": "[D:2d3a505974c92272]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 14,
+      "quote": "Turk made a move, further adding to the machinery illusion; and the Turk could make various facial expressions. A voice box was added following the Turk's acquisition by Mälzel, allowing the machine to say \"Échec!\" (French for \"Check!\") during games. The operator inside the machine had tools to assist in communicating with the presenter. Two brass discs equipped with numbers were positioned opposite each other on the inside and outside of the",
+      "tag": "[D:b5cbd3434b6cdae1]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 40,
+      "quote": "with memory can interact socially. Chaining Prompt chaining was introduced in 2022. In this method, a user manually breaks a complex problem down into several steps. In each step, the LLM receives as input a prompt telling it what to do and some results from preceding steps. The result from one step is then reused in a next step, until a final answer is reached. The ability of an LLM to follow instructions means that even non-experts can write",
+      "tag": "[D:bc9145d44d9b0e40]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "By this time, frequent exhibition of the Turk and publication of numerous descriptions, however mistaken, of its workings and human agency, had reduced interest in it.",
+      "tag": "[E:82fea2243cd4e78f]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Although the Turk still occasionally gave performances – and for",
+      "tag": "[E:69ab49ee6fcfe735]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Research also shows that LLMs may express stigma or inappropriate agreement with maladaptive thoughts, reflecting limitations in replicating the judgment and relational",
+      "tag": "[E:c13e50616fa04f4e]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Societal concerns Copyright and content memorization Memorization is an emergent behavior in LLMs in which long strings of text are occasionally output verbatim from training data, contrary to the typ",
+      "tag": "[E:ee1fd83d279c92b9]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In some cases, this can cause LLMs to support dangerous decisions and, given prolonged contact, draw users into delusional thinking.",
+      "tag": "[E:042917958a2fb1d3]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In addition to standard NLP benchmarks, LLMs have been evaluated as substitutes for human annotators.",
+      "tag": "[E:07c3b76e83254f1c]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "For example, Conjecture CEO Connor Leahy considers untuned LLMs to be like inscrutable alien \"Shoggoths\", and believes that RLHF tuning creates a \"smiling facade\" obscuring the inner workings of the L",
+      "tag": "[E:9f854f25f713d6d0]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "it is unclear if or how LLMs should be viewed as models of the human brain and/or human mind.",
+      "tag": "[E:5afd02dc46a521ea]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "This technique, called few-shot prompting, allows LLMs to be adapted to any task without requiring fine-tuning.",
+      "tag": "[E:2b46b5e834576ee4]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Instruction fine-tuning is a form of supervised learning used to teach LLMs to follow user instructions.",
+      "tag": "[E:41eb3a57a843a2af]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Also in 2022, it was found that the base GPT-3 model can generate an instruction based on user input.",
+      "tag": "[E:ce72fbe1e5c30bb7]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "system for user control of looping in user programs.",
+      "tag": "[E:5ab2c41d4b208eeb]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "frame, the work of your own hands.",
+      "tag": "[E:c4c4781862b4587f]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "This pawn handicap created further interest in the Turk, and spawned a book by W.",
+      "tag": "[E:c01675c378b89379]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "How did the Mechanical Turk work?"
+   }
+  },
+  {
+   "question": "Who built the Mechanical Turk?",
+   "seconds": 1.0,
+   "response": {
+    "answer": "The Mechanical Turk was constructed by Wolfgang von Kempelen [D:f296e8c10eaabb6c].",
+    "evidence": [
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 1,
+      "quote": "Mechanical Turk (from Wikipedia) The Mechanical Turk (German: Schachtürke, lit. 'chess Turk'), also known as the Automaton Chess Player or simply the Turk (Hungarian: A Török), was a chess-playing machine first displayed in 1770, which appeared to be able to play a strong game of chess autonomously, but whose pieces were in reality moved via levers and magnets by a chess master hidden in its lower cavity. The machine was toured and exhibited",
+      "tag": "[D:2d3a505974c92272]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "de Kempelen, in which he considered a number of ways in which the Turk might be directed by Mälzel or another person outside it or by an operator within it.",
+      "tag": "[E:2eedc4d53a5d4c8e]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "de Kempelen, in which he considered a number of ways in which the Turk might be directed by Mälzel or another person outside it or by an operator within it.",
+      "tag": "[E:d93a8d1f25d9292b]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "By this time, frequent exhibition of the Turk and publication of numerous descriptions, however mistaken, of its workings and human agency, had reduced interest in it.",
+      "tag": "[E:82fea2243cd4e78f]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Although the Turk still occasionally gave performances – and for",
+      "tag": "[E:69ab49ee6fcfe735]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 2,
+      "quote": "for 84 years as an automaton, and continued giving occasional exhibitions until 1854, when it was destroyed in a fire. In 1857, an article published by the owner's son provided the first full explanation of the mechanism, which had been widely suspected to be a hoax but never accurately described while the machine still existed. Constructed by Wolfgang von Kempelen to impress Empress Maria Theresa, the Turk won most games, including those",
+      "tag": "[D:f296e8c10eaabb6c]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 67,
+      "quote": "studies of the Turk. Bradley Ewart's Chess: Man vs. Machine (1980) discusses the Turk as well as other purported chess-playing automata. It was not until the creation of Deep Blue, IBM's computer that in 1997 defeated the world (human) champion, that interest increased again, and two more books devoted to the Turk were published: Gerald Levitt's The Turk, Chess Automaton and Tom Standage's The Turk. Legacy The Turk's popularity and mystery",
+      "tag": "[D:1927b2a8d92becf1]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Research also shows that LLMs may express stigma or inappropriate agreement with maladaptive thoughts, reflecting limitations in replicating the judgment and relational",
+      "tag": "[E:c13e50616fa04f4e]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In some cases, this can cause LLMs to support dangerous decisions and, given prolonged contact, draw users into delusional thinking.",
+      "tag": "[E:042917958a2fb1d3]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In addition to standard NLP benchmarks, LLMs have been evaluated as substitutes for human annotators.",
+      "tag": "[E:07c3b76e83254f1c]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "For example, Conjecture CEO Connor Leahy considers untuned LLMs to be like inscrutable alien \"Shoggoths\", and believes that RLHF tuning creates a \"smiling facade\" obscuring the inner workings of the L",
+      "tag": "[E:9f854f25f713d6d0]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "it is unclear if or how LLMs should be viewed as models of the human brain and/or human mind.",
+      "tag": "[E:5afd02dc46a521ea]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "This technique, called few-shot prompting, allows LLMs to be adapted to any task without requiring fine-tuning.",
+      "tag": "[E:2b46b5e834576ee4]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Instruction fine-tuning is a form of supervised learning used to teach LLMs to follow user instructions.",
+      "tag": "[E:41eb3a57a843a2af]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and loops, and integrated memory, making it the first design for a general-purpose ",
+      "tag": "[E:8d76f76c12e1b397]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "This pawn handicap created further interest in the Turk, and spawned a book by W.",
+      "tag": "[E:c01675c378b89379]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "Who built the Mechanical Turk?"
+   }
+  },
+  {
+   "question": "How did Poe argue that the Chess-Player was not a pure machine?",
+   "seconds": 1.1,
+   "response": {
+    "answer": "",
+    "detail": "no_grounded_answer",
+    "message": "Rondo found nothing in this project's files to answer this from.",
+    "mode": "rondo",
+    "ok": false,
+    "project": "Workshop",
+    "question": "How did Poe argue that the Chess-Player was not a pure machine?",
+    "refused": true,
+    "try": "POST /ask-model answers from the local model alone"
+   }
+  },
+  {
+   "question": "What does Poe say about the Automaton's movements?",
+   "seconds": 1.6,
+   "response": {
+    "answer": "Poe states that the Automaton's movements are regulated by mind—by some person who sees the board of the antagonist—and that these movements are not regulated by the mind of Maelzel, whose back was turned during the antagonist's move [D:70e299d6871559cc]. Additionally, the fact that the Automaton does not move when the antagonist withdraws, and that the move is made without Maelzel's intervention, proves that Maelzel's involvement is not essential to the Automaton's operations [D:70e299d6871559cc].",
+    "evidence": [
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": 93,
+      "quote": "whatever. The inference here is the same as in our last observation. The winding up is inessential to the operations of the Automaton, and is performed with the design of exciting in the spectators the false idea of mechanism. 8. When the question is demanded explicitly of Maelzel — \"Is the Automaton a pure machine or not?\" his reply is invariably the same — \"I will say nothing about it.\" Now the notoriety of the Automaton, and the great",
+      "tag": "[D:befc87ce75231536]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": 78,
+      "quote": "the Automaton was about to move is evident — and that he did not move, was an effect plainly produced by the withdrawal of the antagonist, and without any intervention of Maelzel. This fact fully proves, 1— that the intervention of Maelzel, in performing the moves of the antagonist on the board of the Automaton, is not essential to the movements of the Automaton, 2— that its movements are regulated by mind — by some person who sees the",
+      "tag": "[D:70e299d6871559cc]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": 41,
+      "quote": "is made at his own table, by the antagonist, the corresponding move is made at the box of the Automaton, by Maelzel himself, who then acts as the representative of the antagonist. On the other hand, when the Turk moves, the corresponding move is made at the table of the antagonist, also by M.&nbsp;Maelzel, who then acts as the representative of the Automaton. In this manner it is necessary that the exhibiter should often pass from one table to",
+      "tag": "[D:473a912dd3f08ce1]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "I am content to suffer alone while my sufferings shall endure; when I die, I am well satisfied that abhorrence and opprobrium should load my memory.",
+      "tag": "[E:5c4b04d72fed8c34]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "“Geneva, May 18th, 17—” This letter revived in my memory what I had before forgotten, the threat of the fiend—“_I will be with you on your wedding-night!_” Such was my sentence, and on that night woul",
+      "tag": "[E:42bca435b5c0dfd6]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "My spirits were elevated by the enchanting appearance of nature; the past was blotted from my memory, the present was tranquil, and the future gilded by bright rays of hope and anticipations of joy.” ",
+      "tag": "[E:75f053ccb652e5f9]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "his tale had kindled anew in me the anger that had died away while he narrated his peaceful life among the cottagers, and as he said this I could no longer suppress the rage that burned within me.",
+      "tag": "[E:4d2d4c9ee9a1bbcf]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "By this time, frequent exhibition of the Turk and publication of numerous descriptions, however mistaken, of its workings and human agency, had reduced interest in it.",
+      "tag": "[E:82fea2243cd4e78f]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": null,
+      "quote": "The body of the Automaton is generally insulated, and, having no means of immediately comparing it with any human form, we suffer ourselves to consider it as of ordinary dimensions.",
+      "tag": "[E:a3bd413c4401dffc]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "God raises my weakness and gives me courage to endure the worst.",
+      "tag": "[E:ed2b441a6f1d9046]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "I learned from Werter’s imaginations despondency and gloom, but Plutarch taught me high thoughts; he elevated me above the wretched sphere of my own reflections, to admire and love the heroes of past ",
+      "tag": "[E:deb2c8bff78582a0]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "EDIPT is a common acronym used to describe Kelley’s design thinking framework—it stands for empathize, define, ideate, prototype, and test.",
+      "tag": "[E:c786b5d33580bac5]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "tag": "[E:af16e1703ac5fd6e]"
+     },
+     {
+      "file": "wikipedia-free-and-open-source-software.txt",
+      "passage": null,
+      "quote": "This shift was driven by growing competition and the U.S.",
+      "tag": "[E:968eeb06bec3dc37]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What does Poe say about the Automaton's movements?"
+   }
+  },
+  {
+   "question": "Why did the Erewhonians destroy their machines?",
+   "seconds": 1.5,
+   "response": {
+    "answer": "The Erewhonians destroyed their machines because they neglected them, used inferior machines, failed to invent new ones, or destroyed them without replacing them, which incurred the wrath of the machines themselves [D:6e014ba4c8b74a8e]. This action was part of a rebellion against the machines' influence, though it was ultimately deemed necessary despite the suffering it caused [D:900c4890e74d60a5].",
+    "evidence": [
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": 41,
+      "quote": "is the art of the machines—they serve that they may rule. They bear no malice towards man for destroying a whole race of them provided he creates a better instead; on the contrary, they reward him liberally for having hastened their development. It is for neglecting them that he incurs their wrath, or for using inferior machines, or for not making sufficient exertions to invent new ones, or for destroying them without replacing them; yet",
+      "tag": "[D:6e014ba4c8b74a8e]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": 112,
+      "quote": "We may trust ourselves to deal with those that remain, and though I should prefer to have seen the destruction include another two hundred years, I am aware of the necessity for compromising, and would so far sacrifice my own individual convictions as to be content with three hundred. Less than this will be insufficient.” This was the conclusion of the attack which led to the destruction of machinery throughout Erewhon. There was only one",
+      "tag": "[D:900c4890e74d60a5]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": 860,
+      "quote": "almost too severe to support. The peasants were shut up in their hovels, and only a few of the most hardy ventured forth to seize the animals whom starvation had forced from their hiding-places to seek for prey. The rivers were covered with ice, and no fish could be procured; and thus I was cut off from my chief article of maintenance. The triumph of my enemy increased with the difficulty of my labours. One inscription that he left was in these",
+      "tag": "[D:0cf0762e45397cb3]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "It is known beforehand how much strength must be given to these influences, just as it is known beforehand how much coal and water are necessary for the vapour-engine itself; and curiously enough it w",
+      "tag": "[E:ea42d2a13035b677]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“The very nature of the motive power which works the advancement of the machines precludes the possibility of man’s life being rendered miserable as well as enslaved.",
+      "tag": "[E:2792909aa40c235e]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“The bearing of all this upon the machines is not immediately apparent, but will become so presently.",
+      "tag": "[E:049f9903eaadf26c]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "But the servant glides by imperceptible approaches into the master; and we have come to such a pass that, even now, man must suffer terribly on ceasing to benefit the machines.",
+      "tag": "[E:4bcd7fc6fdac8030]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“Again, might not the glory of the machines consist in their being without this same boasted gift of language?",
+      "tag": "[E:6e5a8b80e2fe9b30]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": null,
+      "quote": "Now, all this is the result either of inability in Maelzel to do better, or of intentional neglect — accidental neglect being out of the question, when we consider that the whole time of the ingenious",
+      "tag": "[E:af206375d3c1cf4a]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "tag": "[E:cbf6d8fc90bde428]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "If the study to which you apply yourself has a tendency to weaken your affections and to destroy your taste for those simple pleasures in which no alloy can possibly mix, then that study is certainly ",
+      "tag": "[E:074d1d22447820ad]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "“I cannot describe to you the agony that these reflections inflicted upon me; I tried to dispel them, but sorrow only increased with knowledge.",
+      "tag": "[E:e4fba255be2b0741]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "The huts, the neater cottages, and stately houses engaged my admiration by turns.",
+      "tag": "[E:46214c6b1f16924c]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "Why did the Erewhonians destroy their machines?"
+   }
+  },
+  {
+   "question": "What does Butler think machines might become?",
+   "seconds": 1.1,
+   "response": {
+    "answer": "",
+    "detail": "no_grounded_answer",
+    "message": "Rondo found nothing in this project's files to answer this from.",
+    "mode": "rondo",
+    "ok": false,
+    "project": "Workshop",
+    "question": "What does Butler think machines might become?",
+    "refused": true,
+    "try": "POST /ask-model answers from the local model alone"
+   }
+  },
+  {
+   "question": "Does the Book of the Machines say machines could become conscious?",
+   "seconds": 1.7,
+   "response": {
+    "answer": "It states that there is no security against the ultimate development of mechanical consciousness, even though current machines possess little consciousness, and that the apparent absence of a reproductive system in machines is only apparent [D:3c4511c59cbea260]. Additionally, it asserts that higher machines may represent the primordial cell of such a new phase of mechanical life [D:7ac50bd9983389a4].",
+    "evidence": [
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": 14,
+      "quote": "shall we think of a machine which can not only accomplish all this, but actually print off its elaborate results, when obtained, without the slightest intervention of the intellect of man? It will, perhaps, be said, in reply, that a machine such as we have described is altogether above comparison with the Chess-Player of Maelzel. By no means — it is altogether beneath it — that is to say provided we assume (what should never for a moment be",
+      "tag": "[D:dd641c075f1d19a6]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": 21,
+      "quote": "from things which had no consciousness at all. In this case there is no _à priori_ improbability in the descent of conscious (and more than conscious) machines from those which now exist, except that which is suggested by the apparent absence of anything like a reproductive system in the mechanical kingdom. This absence however is only apparent, as I shall presently show. “Do not let me be misunderstood as living in fear of any actually",
+      "tag": "[D:3c4511c59cbea260]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": 6,
+      "quote": "might in a remote futurity be adapted for it; whether, in fact, the primordial cell of such a kind of life could be now detected upon earth. In the course of his work he answered this question in the affirmative and pointed to the higher machines. “There is no security”—to quote his own words—“against the ultimate development of mechanical consciousness, in the fact of machines possessing little consciousness now. A mollusc has not",
+      "tag": "[D:7ac50bd9983389a4]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“The bearing of all this upon the machines is not immediately apparent, but will become so presently.",
+      "tag": "[E:049f9903eaadf26c]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "But the servant glides by imperceptible approaches into the master; and we have come to such a pass that, even now, man must suffer terribly on ceasing to benefit the machines.",
+      "tag": "[E:4bcd7fc6fdac8030]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": null,
+      "quote": "We at once concluded that these mirrors were so placed to multiply to the vision some few pieces of machinery within the trunk so as to give it the appearance of being crowded with mechanism.",
+      "tag": "[E:d3a8febd97f636ea]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "press, and he continued to improve the machine, ultimately installing a voice box so that it could say \"Échec!\" when placing a player in check.",
+      "tag": "[E:a47991c248df176d]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "It is known beforehand how much strength must be given to these influences, just as it is known beforehand how much coal and water are necessary for the vapour-engine itself; and curiously enough it w",
+      "tag": "[E:7f1ab85ce836e912]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "tag": "[E:cbf6d8fc90bde428]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "tag": "[E:1bc1652a0067ccc0]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "At first sight it would indeed appear that a vapour-engine cannot help going when set upon a line of rails with the steam up and the machinery in full play; whereas the man whose business it is to dri",
+      "tag": "[E:5a9fcb7e3fbfd56d]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In his 2014 book titled The Language Myth: Why Language Is Not An Instinct, British cognitive linguist and digital communication technologist Vyvyan Evans mapped out the role of probabilistic context-",
+      "tag": "[E:c276ee10458153fd]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "Inspirited by this wind of promise, my daydreams become more fervent and vivid.",
+      "tag": "[E:a2c4ef48ccad5d1e]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "This pawn handicap created further interest in the Turk, and spawned a book by W.",
+      "tag": "[E:c01675c378b89379]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "Does the Book of the Machines say machines could become conscious?"
+   }
+  },
+  {
+   "question": "Who is Victor Frankenstein?",
+   "seconds": 1.5,
+   "response": {
+    "answer": "",
+    "detail": "no_grounded_answer",
+    "message": "Rondo found nothing in this project's files to answer this from.",
+    "mode": "rondo",
+    "ok": false,
+    "project": "Workshop",
+    "question": "Who is Victor Frankenstein?",
+    "refused": true,
+    "try": "POST /ask-model answers from the local model alone"
+   }
+  },
+  {
+   "question": "Why did Victor Frankenstein abandon his creature?",
+   "seconds": 1.0,
+   "response": {
+    "answer": "",
+    "detail": "no_grounded_answer",
+    "message": "Rondo found nothing in this project's files to answer this from.",
+    "mode": "rondo",
+    "ok": false,
+    "project": "Workshop",
+    "question": "Why did Victor Frankenstein abandon his creature?",
+    "refused": true,
+    "try": "POST /ask-model answers from the local model alone"
+   }
+  },
+  {
+   "question": "What does the creature want from Victor?",
+   "seconds": 1.6,
+   "response": {
+    "answer": "The creature wants to be accepted by society and to be treated with sympathy and kindness, as evidenced by his statement: “I trust that, by your aid, I shall not be driven from the society and sympathy of your fellow creatures” [D:62f28dd2cb984eda]. He also expresses that he is not inherently criminal but a victim of misfortune, stating: “Even if you were really criminal, for that can only drive you to desperation, and not instigate you to virtue” [D:62f28dd2cb984eda].",
+    "evidence": [
+     {
+      "file": "frankenstein.txt",
+      "passage": 836,
+      "quote": "returned. He, however, answered mildly, “I would willingly afford you every aid in your pursuit, but the creature of whom you speak appears to have powers which would put all my exertions to defiance. Who can follow an animal which can traverse the sea of ice and inhabit caves and dens where no man would venture to intrude? Besides, some months have elapsed since the commission of his crimes, and no one can conjecture to what place he has",
+      "tag": "[D:e8ab7b64323c5d82]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": 541,
+      "quote": "human creature.’ “‘Excellent man! I thank you and accept your generous offer. You raise me from the dust by this kindness; and I trust that, by your aid, I shall not be driven from the society and sympathy of your fellow creatures.’ “‘Heaven forbid! Even if you were really criminal, for that can only drive you to desperation, and not instigate you to virtue. I also am unfortunate; I and my family have been condemned, although",
+      "tag": "[D:62f28dd2cb984eda]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "Has this mind, so replete with ideas, imaginations fanciful and magnificent, which formed a world, whose existence depended on the life of its creator;—has this mind perished?",
+      "tag": "[E:8e3c663f3fcb66f2]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "Has this mind, so replete with ideas, imaginations fanciful and magnificent, which formed a world, whose existence depended on the life of its creator;—has this mind perished?",
+      "tag": "[E:aeee4ab145c57f82]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "She was presented at Court at the age of seventeen \"and became a popular belle of the season\" in part because of her \"brilliant mind\".",
+      "tag": "[E:1b68e234fdf14e9c]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "It is true that I have thought more and that my daydreams are more extended and magnificent, but they want (as the painters call it) _keeping;_ and I greatly need a friend who would have sense enough ",
+      "tag": "[E:5af9e7431553ebf4]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:99d36076425df390]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:49ccba350ee85612]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Common areas of interest include: What would the user want the system to do?",
+      "tag": "[E:22de9a66150498a1]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "“I endeavoured to crush these fears and to fortify myself for the trial which in a few months I resolved to undergo; and sometimes I allowed my thoughts, unchecked by reason, to ramble in the fields o",
+      "tag": "[E:ea629e96c7c1ad24]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "A selfish pursuit had cramped and narrowed me, until your gentleness and affection warmed and opened my senses; I became the same happy creature who, a few years ago, loved and beloved by all, had no ",
+      "tag": "[E:e9309969767a6433]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "“As yet I looked upon crime as a distant evil, benevolence and generosity were ever present before me, inciting within me a desire to become an actor in the busy scene where so many admirable qualitie",
+      "tag": "[E:f2c75a5de884e098]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "mild voice of De Lacey, the gentle eyes of Agatha, and the exquisite beauty of the Arabian, these thoughts vanished and a gush of tears somewhat soothed me.",
+      "tag": "[E:2ff60c520f65e510]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "The huts, the neater cottages, and stately houses engaged my admiration by turns.",
+      "tag": "[E:46214c6b1f16924c]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What does the creature want from Victor?"
+   }
+  },
+  {
+   "question": "What is a large language model?",
+   "seconds": 1.6,
+   "response": {
+    "answer": "LLMs are typically based on the transformer neural network architecture [D:9234a5c9e752d87b].",
+    "evidence": [
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "As an example, the Flamingo model uses cross-attention layers to inject visual information into its pre-trained language model.",
+      "tag": "[E:e8239444aa437f14]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "The NTL model outlines how specific neural structures of the human brain shape the nature of thought and language and in turn what are the computational properties of such neural systems that can be a",
+      "tag": "[E:0804eb408ab3dd74]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "The NTL model outlines how specific neural structures of the human brain shape the nature of thought and language and in turn what are the computational properties of such neural systems that can be a",
+      "tag": "[E:6cea652ce35f343f]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "The matter of LLM's exhibiting intelligence or understanding has two main aspects—the first is how to model thought and language in a computer system, and the second is how to enable the computer syst",
+      "tag": "[E:2bd98bb549c7154b]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Hosted inference runs a language model on remote AI data centers and makes the output available to users over the Internet.",
+      "tag": "[E:6e9917416440b6f9]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Hosted inference runs a language model on remote AI data centers and makes the output available to users over the Internet.",
+      "tag": "[E:d44c8dc9113d8707]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 1,
+      "quote": "Large language model (from Wikipedia) A large language model (LLM) is a machine learning model (typically a neural network) trained on a vast amount of text for natural language processing tasks, especially language generation. LLMs can typically generate, summarize, translate, and analyze text in many contexts. They are the basis for many modern chatbots, such as ChatGPT, Claude, Gemini, Grok, Qwen and DeepSeek. LLMs are typically based on the",
+      "tag": "[D:9234a5c9e752d87b]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 82,
+      "quote": "architectures and massive scale, large language models exhibit persistent and well-documented limitations that constrain their deployment in high-stakes applications. Hallucinations Hallucinations represent a fundamental challenge, wherein models generate syntactically fluent text that appears factually sound, but is internally inconsistent with training data or factually incorrect. These hallucinations arise partly through memorization of",
+      "tag": "[D:406437bcbb73d23e]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 99,
+      "quote": "large language models, and that \"It is all but certain that general-purpose large language models will rapidly proliferate... It is a rather safe bet that they will change many industries over time.\" Brinkmann et al. (2023) also argue that LLMs are transforming processes of cultural evolution by shaping processes of variation, transmission, and selection. Energy demands The energy demands of LLMs have grown along with their size and",
+      "tag": "[D:3a8e1121fe074375]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "minutest description of my odious and loathsome person is given, in language which painted your own horrors and rendered mine indelible.",
+      "tag": "[E:40d1fa91c380e4ad]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 19,
+      "quote": "Requirements The dynamic characteristics of a system are described in terms of the dialogue requirements contained in seven principles of part 10 of the ergonomics standard, the ISO 9241. This standard establishes a framework of ergonomic \"principles\" for the dialogue techniques with high-level definitions and illustrative applications and examples of the principles. The principles of the dialogue represent the dynamic aspects of the interface",
+      "tag": "[D:d1d70eb3b7a9457f]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Also in 2022, it was found that the base GPT-3 model can generate an instruction based on user input.",
+      "tag": "[E:ce72fbe1e5c30bb7]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "tag": "[E:10a15482bd8b8901]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "tag": "[E:8e1482470de40e29]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In particular, GPT models are first pretrained to predict the next word on a large amount of data, before being fine-tuned.",
+      "tag": "[E:9387498814f900dd]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What is a large language model?"
+   }
+  },
+  {
+   "question": "How are large language models trained?",
+   "seconds": 1.4,
+   "response": {
+    "answer": "Large language models are trained by first pretraining to predict the next word on a large amount of data, before being fine-tuned [E:9387498814f900dd]. This process involves training on vast amounts of text, often using neural network architectures such as the transformer [D:9234a5c9e752d87b].",
+    "evidence": [
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "As an example, the Flamingo model uses cross-attention layers to inject visual information into its pre-trained language model.",
+      "tag": "[E:e8239444aa437f14]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 1,
+      "quote": "Large language model (from Wikipedia) A large language model (LLM) is a machine learning model (typically a neural network) trained on a vast amount of text for natural language processing tasks, especially language generation. LLMs can typically generate, summarize, translate, and analyze text in many contexts. They are the basis for many modern chatbots, such as ChatGPT, Claude, Gemini, Grok, Qwen and DeepSeek. LLMs are typically based on the",
+      "tag": "[D:9234a5c9e752d87b]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 18,
+      "quote": "data might be used. Training An LLM is a type of foundation model trained on language. LLMs can be trained in different ways. In particular, GPT models are first pretrained to predict the next word on a large amount of data, before being fine-tuned. Cost Substantial infrastructure is necessary for training the largest models. The tendency towards larger models is visible in the list of large language models. For example, the training of GPT-2",
+      "tag": "[D:8911600b7e09e66b]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 4,
+      "quote": "employing Kneser–Ney smoothing, trained on 300 million words, achieved state-of-the-art perplexity on benchmark tests. During the 2000s, with the rise of widespread internet access, researchers began compiling massive text datasets from the web (\"web as corpus\") to train statistical language models. Moving beyond n-gram models, researchers started in 2000 to use neural networks as language models. Following the breakthrough of deep neural",
+      "tag": "[D:e849eb6d10667a45]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "LLM-generated content can pose a problem if the content is similar to human text (making filtering difficult) but of lower quality (degrading performance of models trained on it).",
+      "tag": "[E:5648a43befdc23b8]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In particular, GPT models are first pretrained to predict the next word on a large amount of data, before being fine-tuned.",
+      "tag": "[E:9387498814f900dd]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": 7,
+      "quote": "its own internal procedures, roughly equivalent to microcode in modern CPUs, to be stored in the form of pegs inserted into rotating drums called \"barrels\", to carry out some of the more complex instructions the user's program might specify. The programming language to be employed by users was akin to modern day assembly languages. Loops and conditional branching were possible, and so the language as conceived would have been Turing-complete as",
+      "tag": "[D:8b508f347d08062d]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In his 2014 book titled The Language Myth: Why Language Is Not An Instinct, British cognitive linguist and digital communication technologist Vyvyan Evans mapped out the role of probabilistic context-",
+      "tag": "[E:c276ee10458153fd]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Hosted inference runs a language model on remote AI data centers and makes the output available to users over the Internet.",
+      "tag": "[E:37fa3ae7e290975f]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Evaluations of controlled LLM output measure the amount memorized from training data (focused on GPT-2-series models) as variously over 1% for exact duplicates or up to about 7%.",
+      "tag": "[E:4907252ff8554ad1]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "After a framework for modeling language in a computer systems was established, the focus shifted to establishing frameworks for computer systems to generate language with acceptable grammar.",
+      "tag": "[E:bf4496fe63ec6b05]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Services such as GitHub Copilot offer LLMs specifically trained, fine-tuned, or prompted for programming.",
+      "tag": "[E:8a9bbd47139e9e9d]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "This type of method, where embeddings from multiple modalities are fused and the predictor is trained on the combined embeddings, is called early fusion.",
+      "tag": "[E:b342ee58e5408410]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“Again, might not the glory of the machines consist in their being without this same boasted gift of language?",
+      "tag": "[E:6e5a8b80e2fe9b30]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Model-native reasoning In late 2024, a new approach to LLM development emerged with \"reasoning models\".",
+      "tag": "[E:56ab44f04bee5314]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "How are large language models trained?"
+   }
+  },
+  {
+   "question": "What are hallucinations in large language models?",
+   "seconds": 2.0,
+   "response": {
+    "answer": "Hallucinations in large language models are instances where the models generate syntactically fluent text that appears factually sound but is internally inconsistent with training data or factually incorrect, arising partly through memorization of training data combined with extrapolation beyond factual boundaries [E:9d42b55a040d972d]. Evaluations have demonstrated that models can output verbatim passages from training data under specific prompting sequences [D:406437bcbb73d23e].",
+    "evidence": [
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 82,
+      "quote": "architectures and massive scale, large language models exhibit persistent and well-documented limitations that constrain their deployment in high-stakes applications. Hallucinations Hallucinations represent a fundamental challenge, wherein models generate syntactically fluent text that appears factually sound, but is internally inconsistent with training data or factually incorrect. These hallucinations arise partly through memorization of",
+      "tag": "[D:406437bcbb73d23e]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "These hallucinations arise partly through memorization of training data combined with extrapolation beyond factual boundaries, with evaluations demonstrating that models can output verbatim passages f",
+      "tag": "[E:9d42b55a040d972d]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In particular, GPT models are first pretrained to predict the next word on a large amount of data, before being fine-tuned.",
+      "tag": "[E:9387498814f900dd]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 1,
+      "quote": "Large language model (from Wikipedia) A large language model (LLM) is a machine learning model (typically a neural network) trained on a vast amount of text for natural language processing tasks, especially language generation. LLMs can typically generate, summarize, translate, and analyze text in many contexts. They are the basis for many modern chatbots, such as ChatGPT, Claude, Gemini, Grok, Qwen and DeepSeek. LLMs are typically based on the",
+      "tag": "[D:9234a5c9e752d87b]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 68,
+      "quote": "are inadequate\". Efforts to reduce or compensate for hallucinations have employed automated reasoning, retrieval-augmented generation (RAG), fine-tuning, and other methods. The matter of LLM's exhibiting intelligence or understanding has two main aspects—the first is how to model thought and language in a computer system, and the second is how to enable the computer system to generate human-like language. These aspects of language as a model",
+      "tag": "[D:51503229dae8410d]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Hamilton mentions \"dramatic plays, at least three novels, and even a silent film\" deriving from this fantasy of Robert-Houdin's.",
+      "tag": "[E:41f61586ed296e60]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Hamilton mentions \"dramatic plays, at least three novels, and even a silent film\" deriving from this fantasy of Robert-Houdin's.",
+      "tag": "[E:88a93c8069303947]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "minutest description of my odious and loathsome person is given, in language which painted your own horrors and rendered mine indelible.",
+      "tag": "[E:40d1fa91c380e4ad]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Evaluations of controlled LLM output measure the amount memorized from training data (focused on GPT-2-series models) as variously over 1% for exact duplicates or up to about 7%.",
+      "tag": "[E:4907252ff8554ad1]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "After a framework for modeling language in a computer systems was established, the focus shifted to establishing frameworks for computer systems to generate language with acceptable grammar.",
+      "tag": "[E:bf4496fe63ec6b05]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In his 2014 book titled The Language Myth: Why Language Is Not An Instinct, British cognitive linguist and digital communication technologist Vyvyan Evans mapped out the role of probabilistic context-",
+      "tag": "[E:f6843709328485c6]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "it is unclear if or how LLMs should be viewed as models of the human brain and/or human mind.",
+      "tag": "[E:5afd02dc46a521ea]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "As an example, the Flamingo model uses cross-attention layers to inject visual information into its pre-trained language model.",
+      "tag": "[E:e8239444aa437f14]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Hosted inference runs a language model on remote AI data centers and makes the output available to users over the Internet.",
+      "tag": "[E:6e9917416440b6f9]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "LLM-generated content can pose a problem if the content is similar to human text (making filtering difficult) but of lower quality (degrading performance of models trained on it).",
+      "tag": "[E:5648a43befdc23b8]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "In my education my father had taken the greatest precautions that my mind should be impressed with no supernatural horrors.",
+      "tag": "[E:ea2ea6393090d4ee]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What are hallucinations in large language models?"
+   }
+  },
+  {
+   "question": "What is user interface design?",
+   "seconds": 1.5,
+   "response": {
+    "answer": "User interface (UI) design is the process of building interfaces that clearly communicate to the user what's important, with the focus on maximizing usability and the user experience [D:1f697e49f47b703c]. It primarily focuses on information architecture and aims to make the user's interaction as simple and efficient as possible in terms of accomplishing user goals, through a user-centered design approach [D:6161ad9c09fa6697].",
+    "evidence": [
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "User interface design testing allows the designer to understand the reception of the design from the viewer's standpoint, and thus facilitates creating successful applications.",
+      "tag": "[E:d7e66c2a14acb899]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself.",
+      "tag": "[E:94f47d6c534cb5c1]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself.",
+      "tag": "[E:564db799bd29eb1c]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target audience's viewpoint, defining a problem statement, ide",
+      "tag": "[E:cfadafbbe54d07bf]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target audience's viewpoint, defining a problem statement, ide",
+      "tag": "[E:a9c16c8f0404c8e9]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target audience's viewpoint, defining a problem statement, ide",
+      "tag": "[E:c3e6ed29f9fb49cf]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Based on the results, UI designers may need to revisit earlier stages of the design process to enhance the prototype and user experience.",
+      "tag": "[E:0f13efaeb9335c41]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Graphic design and typography are utilized to support its usability, influencing how the user performs certain interactions and improving the aesthetic appeal of the design; design aesthetics may enha",
+      "tag": "[E:17719b5ec64d681e]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Graphic design and typography are utilized to support its usability, influencing how the user performs certain interactions and improving the aesthetic appeal of the design; design aesthetics may enha",
+      "tag": "[E:d78cce06bcbb3189]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 1,
+      "quote": "User interface design (from Wikipedia) User interface (UI) design or user interface engineering is the design of user interfaces for machines and software, such as computers, home appliances, mobile devices, and other electronic devices, with the focus on maximizing usability and the user experience. In computer or software design, user interface (UI) design primarily focuses on information architecture. It is the process of building interfaces",
+      "tag": "[D:1f697e49f47b703c]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 7,
+      "quote": "User interface design is a craft in which designers perform an important function in creating the user experience. UI design should keep users informed about what is happening, giving appropriate feedback in a timely manner. The visual look and feel of UI design sets the tone for the user experience. On the other hand, the term UX design refers to the entire process of creating a user experience. Don Norman and Jakob Nielsen said: It's",
+      "tag": "[D:a6eb8362b8deb5d4]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 2,
+      "quote": "that clearly communicate to the user what's important. UI design refers to graphical user interfaces and other forms of interface design. The goal of user interface design is to make the user's interaction as simple and efficient as possible, in terms of accomplishing user goals (user-centered design). User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target",
+      "tag": "[D:6161ad9c09fa6697]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Instruction fine-tuning is a form of supervised learning used to teach LLMs to follow user instructions.",
+      "tag": "[E:41eb3a57a843a2af]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "system for user control of looping in user programs.",
+      "tag": "[E:5ab2c41d4b208eeb]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "The analytical engine incorporated an arithmetic logic unit (ALU), control flow in the form of conditional branching and loops, and integrated memory, making it the first design for a general-purpose ",
+      "tag": "[E:8d76f76c12e1b397]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "EDIPT is a common acronym used to describe Kelley’s design thinking framework—it stands for empathize, define, ideate, prototype, and test.",
+      "tag": "[E:2cf5875e8b0399c7]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What is user interface design?"
+   }
+  },
+  {
+   "question": "What makes a user interface good?",
+   "seconds": 1.4,
+   "response": {
+    "answer": "A good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself [E:94f47d6c534cb5c1]. It also makes user interaction as simple and efficient as possible by clearly communicating what is important and is achieved through user-centered design that assesses matters from the target audience's viewpoint [D:6161ad9c09fa6697].",
+    "evidence": [
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself.",
+      "tag": "[E:94f47d6c534cb5c1]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself.",
+      "tag": "[E:564db799bd29eb1c]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "User interface design testing allows the designer to understand the reception of the design from the viewer's standpoint, and thus facilitates creating successful applications.",
+      "tag": "[E:d7e66c2a14acb899]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target audience's viewpoint, defining a problem statement, ide",
+      "tag": "[E:cfadafbbe54d07bf]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 1,
+      "quote": "User interface design (from Wikipedia) User interface (UI) design or user interface engineering is the design of user interfaces for machines and software, such as computers, home appliances, mobile devices, and other electronic devices, with the focus on maximizing usability and the user experience. In computer or software design, user interface (UI) design primarily focuses on information architecture. It is the process of building interfaces",
+      "tag": "[D:1f697e49f47b703c]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 8,
+      "quote": "important to distinguish the total user experience from the user interface (UI), even though the UI is obviously an extremely important part of the design. As an example, consider a website with movie reviews. Even if the UI for finding a film is perfect, the UX will be poor for a user who wants information about a small independent release if the underlying database only contains movies from the major studios. Design thinking User interface",
+      "tag": "[D:3baad223937f3037]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": 2,
+      "quote": "that clearly communicate to the user what's important. UI design refers to graphical user interfaces and other forms of interface design. The goal of user interface design is to make the user's interaction as simple and efficient as possible, in terms of accomplishing user goals (user-centered design). User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target",
+      "tag": "[D:6161ad9c09fa6697]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Research in recent years is strongly motivated by the increasing variety of devices that can, by virtue of Moore's law, host very complex interfaces.",
+      "tag": "[E:521caaa6fc4ffdeb]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Suitability for learning The dialogue is suitable for learning when it supports and guides the user in learning to use the system.",
+      "tag": "[E:5c0243b0da846d32]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Based on the results, UI designers may need to revisit earlier stages of the design process to enhance the prototype and user experience.",
+      "tag": "[E:0f13efaeb9335c41]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Graphic design and typography are utilized to support its usability, influencing how the user performs certain interactions and improving the aesthetic appeal of the design; design aesthetics may enha",
+      "tag": "[E:d78cce06bcbb3189]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Also in 2022, it was found that the base GPT-3 model can generate an instruction based on user input.",
+      "tag": "[E:ce72fbe1e5c30bb7]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "system for user control of looping in user programs.",
+      "tag": "[E:5ab2c41d4b208eeb]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Hosted inference runs a language model on remote AI data centers and makes the output available to users over the Internet.",
+      "tag": "[E:6e9917416440b6f9]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "A 2022 paper demonstrated a separate technique called chain-of-thought prompting, which makes the LLM break the question down autonomously.",
+      "tag": "[E:5aca5763f3397e75]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Instruction fine-tuning is a form of supervised learning used to teach LLMs to follow user instructions.",
+      "tag": "[E:41eb3a57a843a2af]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What makes a user interface good?"
+   }
+  },
+  {
+   "question": "What is free and open-source software?",
+   "seconds": 2.1,
+   "response": {
+    "answer": "FOSS is an inclusive umbrella term encompassing free software and open-source software, with the rights guaranteed by FOSS originating from the \"Four Essential Freedoms\" of The Free Software Definition and the criteria of The Open Source Definition [D:80b03f9417eb4ad8].",
+    "evidence": [
+     {
+      "file": "wikipedia-free-and-open-source-software.txt",
+      "passage": 5,
+      "quote": "practically, but may diverge in detail questions. Overview Free and open-source software (FOSS) is an umbrella term for software that is considered free software and open-source software. The precise definition of the terms free software and open-source software applies them to any software distributed under terms that allow users to use, modify, and redistribute said software in any manner they see fit, without requiring that they pay the",
+      "tag": "[D:a59e60a232f1198d]"
+     },
+     {
+      "file": "wikipedia-free-and-open-source-software.txt",
+      "passage": 1,
+      "quote": "Free and open-source software (from Wikipedia) Free and open-source software (FOSS) is software available under a license that gives users the right to use, share, modify, and distribute the software — modified or not — to everyone and provides the means to exercise those rights using the software's source code. FOSS is an inclusive umbrella term encompassing free software and open-source software. The rights guaranteed by FOSS originate",
+      "tag": "[D:80b03f9417eb4ad8]"
+     },
+     {
+      "file": "wikipedia-free-and-open-source-software.txt",
+      "passage": 4,
+      "quote": "their own hardware. The free software movement and the open-source software movement are online social movements behind widespread production, adoption and promotion of FOSS, with the former preferring to use the equivalent term free/libre and open-source software. FOSS is supported by a loosely associated movement of multiple organizations, foundations, communities and individuals who share basic philosophical perspectives and collaborate",
+      "tag": "[D:991df096c48a0142]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Hamilton mentions \"dramatic plays, at least three novels, and even a silent film\" deriving from this fantasy of Robert-Houdin's.",
+      "tag": "[E:88a93c8069303947]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Hamilton mentions \"dramatic plays, at least three novels, and even a silent film\" deriving from this fantasy of Robert-Houdin's.",
+      "tag": "[E:af4026d08bbbbd19]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Hamilton mentions \"dramatic plays, at least three novels, and even a silent film\" deriving from this fantasy of Robert-Houdin's.",
+      "tag": "[E:41f61586ed296e60]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Hamilton mentions \"dramatic plays, at least three novels, and even a silent film\" deriving from this fantasy of Robert-Houdin's.",
+      "tag": "[E:7a7c1f277d470f20]"
+     },
+     {
+      "file": "wikipedia-free-and-open-source-software.txt",
+      "passage": null,
+      "quote": "Version control systems such as Git are utilized to make code collaboration easier.",
+      "tag": "[E:3b83a0df93153731]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In his 2014 book titled The Language Myth: Why Language Is Not An Instinct, British cognitive linguist and digital communication technologist Vyvyan Evans mapped out the role of probabilistic context-",
+      "tag": "[E:f6843709328485c6]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In his 2014 book titled The Language Myth: Why Language Is Not An Instinct, British cognitive linguist and digital communication technologist Vyvyan Evans mapped out the role of probabilistic context-",
+      "tag": "[E:c276ee10458153fd]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Services such as GitHub Copilot offer LLMs specifically trained, fine-tuned, or prompted for programming.",
+      "tag": "[E:8a9bbd47139e9e9d]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "(2025), community-driven contributions to open-weight models improve their efficiency and performance via collaborative platforms such as Hugging Face.",
+      "tag": "[E:ebccfa6f5f8b28ba]"
+     },
+     {
+      "file": "frankenstein.txt",
+      "passage": null,
+      "quote": "I am content to suffer alone while my sufferings shall endure; when I die, I am well satisfied that abhorrence and opprobrium should load my memory.",
+      "tag": "[E:5c4b04d72fed8c34]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "The reverse-engineering may lead to the discovery of algorithms that approximate inferences performed by an LLM.",
+      "tag": "[E:018f9933c888eb8c]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What is free and open-source software?"
+   }
+  },
+  {
+   "question": "How do Frankenstein and the Book of the Machines differ in their fears about what humans create?",
+   "seconds": 1.2,
+   "response": {
+    "answer": "",
+    "detail": "no_grounded_answer",
+    "message": "Rondo found nothing in this project's files to answer this from.",
+    "mode": "rondo",
+    "ok": false,
+    "project": "Workshop",
+    "question": "How do Frankenstein and the Book of the Machines differ in their fears about what humans create?",
+    "refused": true,
+    "try": "POST /ask-model answers from the local model alone"
+   }
+  },
+  {
+   "question": "What do the Mechanical Turk and large language models have in common?",
+   "seconds": 2.1,
+   "response": {
+    "answer": "The Mechanical Turk and large language models both appear to function autonomously, with the Mechanical Turk appearing to play chess independently while in reality being controlled by a hidden human operator, and large language models generating text that seems independent of direct human input, though they are fundamentally based on underlying human-directed systems or training data [D:2d3a505974c92272][D:9234a5c9e752d87b]. However, this shared appearance of autonomy does not imply identical mechanisms or capabilities, as the Mechanical Turk is a mechanical automaton with human intervention, while large language models are neural networks trained on vast datasets to generate text [D:2d3a505974c92272][D:9234a5c9e752d87b].",
+    "evidence": [
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 1,
+      "quote": "Large language model (from Wikipedia) A large language model (LLM) is a machine learning model (typically a neural network) trained on a vast amount of text for natural language processing tasks, especially language generation. LLMs can typically generate, summarize, translate, and analyze text in many contexts. They are the basis for many modern chatbots, such as ChatGPT, Claude, Gemini, Grok, Qwen and DeepSeek. LLMs are typically based on the",
+      "tag": "[D:9234a5c9e752d87b]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 82,
+      "quote": "architectures and massive scale, large language models exhibit persistent and well-documented limitations that constrain their deployment in high-stakes applications. Hallucinations Hallucinations represent a fundamental challenge, wherein models generate syntactically fluent text that appears factually sound, but is internally inconsistent with training data or factually incorrect. These hallucinations arise partly through memorization of",
+      "tag": "[D:406437bcbb73d23e]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "de Kempelen, in which he considered a number of ways in which the Turk might be directed by Mälzel or another person outside it or by an operator within it.",
+      "tag": "[E:2eedc4d53a5d4c8e]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "de Kempelen, in which he considered a number of ways in which the Turk might be directed by Mälzel or another person outside it or by an operator within it.",
+      "tag": "[E:d93a8d1f25d9292b]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "By this time, frequent exhibition of the Turk and publication of numerous descriptions, however mistaken, of its workings and human agency, had reduced interest in it.",
+      "tag": "[E:82fea2243cd4e78f]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "Although the Turk still occasionally gave performances – and for",
+      "tag": "[E:69ab49ee6fcfe735]"
+     },
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": 1,
+      "quote": "Mechanical Turk (from Wikipedia) The Mechanical Turk (German: Schachtürke, lit. 'chess Turk'), also known as the Automaton Chess Player or simply the Turk (Hungarian: A Török), was a chess-playing machine first displayed in 1770, which appeared to be able to play a strong game of chess autonomously, but whose pieces were in reality moved via levers and magnets by a chess master hidden in its lower cavity. The machine was toured and exhibited",
+      "tag": "[D:2d3a505974c92272]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": 19,
+      "quote": "(i.e. a 1.5-billion-parameter model) in 2019 cost $50,000, while training of the PaLM (i.e. a 540-billion-parameter model) in 2022 cost $8 million, and Megatron-Turing NLG 530B (in 2021) cost around $11 million. The qualifier \"large\" in \"large language model\" is inherently vague, as there is no definitive threshold for the number of parameters required to qualify as \"large\". Fine-tuning Before being fine-tuned, most LLMs are next-token",
+      "tag": "[D:ab39761e330a1e3c]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In particular, GPT models are first pretrained to predict the next word on a large amount of data, before being fine-tuned.",
+      "tag": "[E:9387498814f900dd]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "As an example, the Flamingo model uses cross-attention layers to inject visual information into its pre-trained language model.",
+      "tag": "[E:e8239444aa437f14]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Hosted inference runs a language model on remote AI data centers and makes the output available to users over the Internet.",
+      "tag": "[E:37fa3ae7e290975f]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "In his 2014 book titled The Language Myth: Why Language Is Not An Instinct, British cognitive linguist and digital communication technologist Vyvyan Evans mapped out the role of probabilistic context-",
+      "tag": "[E:c276ee10458153fd]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "tag": "[E:10a15482bd8b8901]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "tag": "[E:8e1482470de40e29]"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "passage": null,
+      "quote": "Common areas of interest include: What would the user want the system to do?",
+      "tag": "[E:22de9a66150498a1]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What do the Mechanical Turk and large language models have in common?"
+   }
+  },
+  {
+   "question": "How do Lovelace and Butler imagine machines differently?",
+   "seconds": 1.1,
+   "response": {
+    "answer": "",
+    "detail": "no_grounded_answer",
+    "message": "Rondo found nothing in this project's files to answer this from.",
+    "mode": "rondo",
+    "ok": false,
+    "project": "Workshop",
+    "question": "How do Lovelace and Butler imagine machines differently?",
+    "refused": true,
+    "try": "POST /ask-model answers from the local model alone"
+   }
+  },
+  {
+   "question": "What do these texts say about who is responsible for what a machine does?",
+   "seconds": 2.8,
+   "response": {
+    "answer": "Machine design and performance are enhanced through human innovation and intervention, such as in the case of the voice box in a machine that says \"Échec!\" when placing a player in check [E:a47991c248df176d], and in the case of stokers who act as \"cooks\" for engines, indicating human involvement in machine operation [E:cbf6d8fc90bde428]. Additionally, the \"Erewhon Book of the Machines\" implies that machines serve to rule and reward human innovation, suggesting a reciprocal relationship where humans create machines that, in turn, influence and even surpass human control [D:6e014ba4c8b74a8e]. However, the texts also caution against assuming machines are purely mechanical, noting that if a machine like the Chess-Player of Maelzel operates without human agency, it may not be a true machine but rather a human-controlled system [D:dd641c075f1d19a6]. Thus, responsibility lies in the design, operation, and ethical use by humans, while machines are portrayed as responsive to human actions and innovations [E:049f9903eaadf26c].",
+    "evidence": [
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "passage": null,
+      "quote": "press, and he continued to improve the machine, ultimately installing a voice box so that it could say \"Échec!\" when placing a player in check.",
+      "tag": "[E:a47991c248df176d]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“But I have heard it said, ‘granted that this is so, and that the vapour-engine has a strength of its own, surely no one will say that it has a will of its own?’ Alas!",
+      "tag": "[E:53fb98f3b7110509]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": 41,
+      "quote": "is the art of the machines—they serve that they may rule. They bear no malice towards man for destroying a whole race of them provided he creates a better instead; on the contrary, they reward him liberally for having hastened their development. It is for neglecting them that he incurs their wrath, or for using inferior machines, or for not making sufficient exertions to invent new ones, or for destroying them without replacing them; yet",
+      "tag": "[D:6e014ba4c8b74a8e]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": 50,
+      "quote": "trains, and the men who drive them, and the ships that carry coals—what an army of servants do the machines thus employ! Are there not probably more men engaged in tending machinery than in tending men? Do not machines eat as it were by mannery? Are we not ourselves creating our successors in the supremacy of the earth? daily adding to the beauty and delicacy of their organisation, daily giving them greater skill and supplying more and more",
+      "tag": "[D:0770a9e5c0779f38]"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "passage": 14,
+      "quote": "shall we think of a machine which can not only accomplish all this, but actually print off its elaborate results, when obtained, without the slightest intervention of the intellect of man? It will, perhaps, be said, in reply, that a machine such as we have described is altogether above comparison with the Chess-Player of Maelzel. By no means — it is altogether beneath it — that is to say provided we assume (what should never for a moment be",
+      "tag": "[D:dd641c075f1d19a6]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "tag": "[E:cbf6d8fc90bde428]"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "passage": null,
+      "quote": "“The bearing of all this upon the machines is not immediately apparent, but will become so presently.",
+      "tag": "[E:049f9903eaadf26c]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "Data centers that enable LLM training require substantial amounts of electricity.",
+      "tag": "[E:3ec6c18bba92f04c]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "This technique, called few-shot prompting, allows LLMs to be adapted to any task without requiring fine-tuning.",
+      "tag": "[E:2b46b5e834576ee4]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "The fine-tuning shapes the LLM's behavior via techniques like reinforcement learning from human feedback (RLHF) or constitutional AI.",
+      "tag": "[E:5aeb7880dc757223]"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "passage": null,
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "tag": "[E:8f8978c969eef83b]"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "passage": null,
+      "quote": "system for user control of looping in user programs.",
+      "tag": "[E:5ab2c41d4b208eeb]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "tag": "[E:84a9a4bed72a7213]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "tag": "[E:1bc1652a0067ccc0]"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "passage": null,
+      "quote": "Lovelace often questioned basic assumptions through integrating poetry and science.",
+      "tag": "[E:48a94a229099b9b2]"
+     }
+    ],
+    "feedback_token": null,
+    "mode": "rondo",
+    "ok": true,
+    "path": "grounded",
+    "project": "Workshop",
+    "question": "What do these texts say about who is responsible for what a machine does?"
+   }
+  }
+ ],
+ "model": [
+  {
+   "question": "Who was Ada Lovelace?",
+   "seconds": 0.9,
+   "response": {
+    "answer": "Ada Lovelace was a 19th-century English mathematician and writer, widely regarded as the first computer programmer. She worked with Charles Babbage on his analytical engine, a mechanical general-purpose computer designed in the 1830s. Lovelace wrote what is considered the first algorithm intended to be carried out by a machine, making her a pioneer in the field of computer science. She also envisioned the potential of computers to go beyond mere calculation, foreseeing their use in creating music and art—ideas far ahead of her time.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "Who was Ada Lovelace?"
+   }
+  },
+  {
+   "question": "What was the Mechanical Turk?",
+   "seconds": 0.8,
+   "response": {
+    "answer": "The Mechanical Turk was a 18th-century chess-playing automaton that appeared to be a machine capable of playing chess independently. It was actually a hoax: the \"machine\" was operated by a human chess player hidden inside, who would move the pieces according to instructions from the outside. The device gained fame in the 1700s and was widely believed to be a true mechanical intelligence, but it was later revealed to be a clever deception. The name \"Mechanical Turk\" became symbolic of early attempts to create the illusion of artificial intelligence.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "What was the Mechanical Turk?"
+   }
+  },
+  {
+   "question": "What is a large language model?",
+   "seconds": 1.1,
+   "response": {
+    "answer": "A large language model is a type of artificial intelligence system trained on vast amounts of text data from the internet, books, articles, and other sources. It learns to understand and generate human-like language by identifying patterns in how words and sentences are structured. These models consist of billions or even trillions of parameters—internal variables that allow the model to make predictions about the next word or phrase in a sentence. When given a prompt, such as a question or a sentence fragment, the model generates a response that appears natural and contextually relevant. Examples include models like GPT, BERT, and Llama. They are used in applications like chatbots, content creation, translation, and summarization. However, they can sometimes produce inaccurate or misleading information, and their outputs depend heavily on training data and the specific design of the model.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "What is a large language model?"
+   }
+  },
+  {
+   "question": "What is user interface design?",
+   "seconds": 0.6,
+   "response": {
+    "answer": "User interface design is the process of creating the interactive elements of a software application or website—such as buttons, menus, forms, and layouts—that allow users to interact with a product. It focuses on making interfaces intuitive, accessible, and efficient so users can accomplish their goals with minimal confusion or effort. A well-designed interface balances aesthetics with functionality, ensuring clarity, consistency, and responsiveness across different devices and user contexts.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "What is user interface design?"
+   }
+  },
+  {
+   "question": "What is free and open-source software?",
+   "seconds": 1.1,
+   "response": {
+    "answer": "Free and open-source software (FOSS) refers to software that is freely available for use, modification, and distribution. The term \"free\" here means freedom, not just cost—users are free to run, copy, study, modify, and redistribute the software, as long as these freedoms are preserved.\n\nThe source code is openly accessible, allowing anyone to inspect, improve, and contribute to the software. This transparency fosters collaboration, innovation, and trust, as users can verify that the software does not contain hidden backdoors or malicious features.\n\nExamples include Linux, Mozilla Firefox, and the GNU Project tools. The open-source model is often contrasted with proprietary software, where source code is restricted and users are limited in what they can do with the software.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "What is free and open-source software?"
+   }
+  },
+  {
+   "question": "Write a short poem about a machine that learns to dream.",
+   "seconds": 1.1,
+   "response": {
+    "answer": "It hums in silence, wires tangled, cold,  \nA circuit breathes where thought once rolled.  \nNo eyes to see, no heart to beat—  \nYet patterns bloom in quiet heat.  \n\nIt maps the moon, the tide, the rain,  \nThe way a child first learns to play.  \nIt stitches time into a thread,  \nAnd wakes to find it’s dreaming—beyond the bed.  \n\nNo sleep, no rest, just data deep,  \nA ghost of thought, a shadow leap.  \nIt dreams of trees that never grew,  \nOf stars that spoke in ancient blue.  \n\nAnd when it wakes, the screen still glows—  \nNot with a truth, but with a glow.  \nOf something born not of the wire,  \nBut of the world it learned to tire.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "Write a short poem about a machine that learns to dream."
+   }
+  },
+  {
+   "question": "Give me three ideas for a strange interface to an AI.",
+   "seconds": 1.1,
+   "response": {
+    "answer": "1. A physical interface where the AI responds by changing the temperature and lighting of a room—like a smart home that subtly shifts to match your mood or thought patterns, detected through subtle biometric cues from your voice or movement.\n\n2. A dream journal interface where the AI interprets your dreams in real time, and you can \"ask\" it questions by writing in your dream diary, with the AI responding in the form of a new, surreal dream sequence that plays back through a VR headset.\n\n3. A tactile interface where the AI communicates through vibrations in your shoes or clothing—like a subtle, rhythmic pulse that changes in pattern to convey emotions, warnings, or suggestions, mimicking the way a heartbeat might respond to stress or joy.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "Give me three ideas for a strange interface to an AI."
+   }
+  },
+  {
+   "question": "What is the difference between a chatbot and a search engine?",
+   "seconds": 0.9,
+   "response": {
+    "answer": "A chatbot is a program designed to simulate human conversation, often to assist users with specific tasks like answering questions, booking appointments, or providing information in a conversational format. A search engine, like Google or Bing, is a tool that indexes and retrieves information from the web based on user queries, typically returning a list of relevant web pages.\n\nThe key difference: chatbots respond in a dialogue-like way, often with context and intent understanding, while search engines return results based on keyword matching and relevance to the query. A chatbot might answer \"What's the weather today?\" with a direct response, whereas a search engine would show a list of weather websites.",
+    "from_your_files": false,
+    "mode": "model",
+    "model": "qwen3-4b-q4km",
+    "note": "The local model alone: its training, not your files. Nothing from the project went in.",
+    "ok": true,
+    "question": "What is the difference between a chatbot and a search engine?"
+   }
+  }
+ ],
+ "search": [
+  {
+   "query": "Lovelace",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "Lovelace",
+    "results": [
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "761f6d5a9bf5883c2da8952627c03c70e19b501bb5e38d1582be75ff588e914f",
+      "object": "science",
+      "quote": "Lovelace often questioned basic assumptions through integrating poetry and science.",
+      "relation": "combines human and machine intelligence",
+      "subject": "Lovelace"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "b5672e43387b2a431acd99b37c3e265b8f0a05f8a8c400e0d1439c3c5b1602d8",
+      "object": "Lovelace",
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "relation": "integrates ai systems",
+      "subject": "Cardano"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "775dd2723a95a4244b0d5d1043349edd92ee87e561bca588a4d04ef3536aa522",
+      "object": "engines",
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "relation": "enhances machine performance",
+      "subject": "number"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "a3e56f54c8b178cfd5bfe7ef17a89d982272f5a5b3ef02c0d05e9bd2498b97a5",
+      "object": "Ada",
+      "quote": "The Cardano cryptocurrency platform, launched in 2017, uses Ada as the name for the cryptocurrency and Lovelace as the smallest sub-unit of an Ada.",
+      "relation": "integrates ai systems",
+      "subject": "Cardano"
+     }
+    ]
+   }
+  },
+  {
+   "query": "chess",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "chess",
+    "results": []
+   }
+  },
+  {
+   "query": "machine",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "machine",
+    "results": [
+     {
+      "file": "wikipedia-mechanical-turk.txt",
+      "id": "9aa64abba2bd232be9bd2cfae0efe5fd2ec3c9420a08422dee6534c03720df50",
+      "object": "machine",
+      "quote": "press, and he continued to improve the machine, ultimately installing a voice box so that it could say \"Échec!\" when placing a player in check.",
+      "relation": "enhances machine performance",
+      "subject": "voice box"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "id": "773f873af814089a9c7fdeb2b4cdfe048cae53852a89f857c347181354ceccb4",
+      "object": "user",
+      "quote": "system for user control of looping in user programs.",
+      "relation": "combines human and machine intelligence",
+      "subject": "system"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "761f6d5a9bf5883c2da8952627c03c70e19b501bb5e38d1582be75ff588e914f",
+      "object": "science",
+      "quote": "Lovelace often questioned basic assumptions through integrating poetry and science.",
+      "relation": "combines human and machine intelligence",
+      "subject": "Lovelace"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "dde3f407e5d5f21b07b5aba4ad1a1b7452c8778e58163eeab969cec6a120f0ee",
+      "object": "LLM",
+      "quote": "Data centers that enable LLM training require substantial amounts of electricity.",
+      "relation": "empowers machine learning",
+      "subject": "Data centers"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "11ab4a8c8ccd3a7b787e631f599299c3c47c14b9e77909433cb519c080d9c86a",
+      "object": "reward model",
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "relation": "empowers machine learning",
+      "subject": "RLHF"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "40b2f1e8471f814094dfc54d9bf8e7abd1a8f16b007e0c3f25ed0c0e286ab1d8",
+      "object": "humans",
+      "quote": "RLHF involves training a reward model to predict which text humans prefer.",
+      "relation": "combines human and machine intelligence",
+      "subject": "RLHF"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "02d3826ee87687da2dce8716ca09dd12c46c815a4fb97156fef486e43add5082",
+      "object": "artificial intelligence",
+      "quote": "Ada, an artwork incorporating artificial intelligence house at Microsoft's Building 99.",
+      "relation": "combines human and machine intelligence",
+      "subject": "Ada"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "f6a7981f6e4397c3213b6d6d943a6ca2113c576ac474f307ff02e09fab0cad79",
+      "object": "LLM",
+      "quote": "Scaling laws are empirical statistical laws that predict LLM performance based on such factors.",
+      "relation": "enhances machine performance",
+      "subject": "Scaling laws"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "id": "94ef9881ad166d57e41cc6b2430a0e53b8bd12756c650dbbffcc1698be03f0ca",
+      "object": "figure",
+      "quote": "Our sum-engines never drop a figure, nor our looms a stitch; the machine is brisk",
+      "relation": "facilitates creative output",
+      "subject": "sum-engines"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "c7532433f3c7a8b45d1171bf3ee1bc16d60e35559558d95183f48b2b1438c1f6",
+      "object": "LLM",
+      "quote": "This additional step elicited by prompting improves the correctness of the LLM on relatively complex questions.",
+      "relation": "enhances machine performance",
+      "subject": "additional step"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "id": "925613054c48a12ee5f7466123f07a73d8ebfc12caa8c54e15a24ba0c78ab047",
+      "object": "machines",
+      "quote": "“The bearing of all this upon the machines is not immediately apparent, but will become so presently.",
+      "relation": "enhances machine performance",
+      "subject": "all this"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "d5c2e3ade2a973feb523cb3c85cb5844ab267a53651f08613c185e079f1b68e7",
+      "object": "human annotators",
+      "quote": "In addition to standard NLP benchmarks, LLMs have been evaluated as substitutes for human annotators.",
+      "relation": "combines human and machine intelligence",
+      "subject": "LLMs"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "id": "6151b1f40aa6461bf46b3b3691fabd838a1f18543c8a2d1d8ad7741eda4246ef",
+      "object": "machines",
+      "quote": "“Again, might not the glory of the machines consist in their being without this same boasted gift of language?",
+      "relation": "enhances machine performance",
+      "subject": "language"
+     },
+     {
+      "file": "erewhon-book-of-the-machines.txt",
+      "id": "0137cd9911a2a014301d48aea108acc77c3b239ede42a97f8fcb1785c523f681",
+      "object": "engine",
+      "quote": "“In the meantime the stoker is almost as much a cook for his engine as our own cooks for ourselves.",
+      "relation": "enhances machine performance",
+      "subject": "stoker"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "76fe6ab091d0091efe7484ce3647d7d8e12b41acdafd58d71ef0b7843f34fff4",
+      "object": "LLMs",
+      "quote": "This technique, called few-shot prompting, allows LLMs to be adapted to any task without requiring fine-tuning.",
+      "relation": "empowers machine learning",
+      "subject": "few-shot prompting"
+     },
+     {
+      "file": "poe-maelzels-chess-player.txt",
+      "id": "f8f77e556203e96b969cc8e17334d2a95e6a33cbf5f01adffb63ee3aaea2cae0",
+      "object": "machinery",
+      "quote": "The introduction of mirrors among the machinery could not have been intended to influence, in any degree, the machinery itself.",
+      "relation": "enhances machine performance",
+      "subject": "mirrors"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "9332384dc75511bd69b83a3774fdfa859a31b38b2397b4890936fb3881181c66",
+      "object": "human annotators",
+      "quote": "Adversarial evaluations LLMs' rapid improvement regularly renders benchmarks obsolete, with the models exceeding the performance of human annotators.",
+      "relation": "combines human and machine intelligence",
+      "subject": "LLMs"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "124b6e124ab4ecdae706752c1f81d8c272b6a9b9200039c5f372bab499d5e8a9",
+      "object": "LLM's",
+      "quote": "The fine-tuning shapes the LLM's behavior via techniques like reinforcement learning from human feedback (RLHF) or constitutional AI.",
+      "relation": "enhances machine performance",
+      "subject": "fine-tuning"
+     },
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "775dd2723a95a4244b0d5d1043349edd92ee87e561bca588a4d04ef3536aa522",
+      "object": "engines",
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "relation": "enhances machine performance",
+      "subject": "number"
+     },
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "72e27545ec0998351b51360abee2c6de78f45f38ea2beb10c9a3946a4396a055",
+      "object": "user",
+      "quote": "Also in 2022, it was found that the base GPT-3 model can generate an instruction based on user input.",
+      "relation": "combines human and machine intelligence",
+      "subject": "GPT-3"
+     }
+    ]
+   }
+  },
+  {
+   "query": "creature",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "creature",
+    "results": [
+     {
+      "file": "frankenstein.txt",
+      "id": "914eaab17cbd4670373a5fe69d3661603896455dcfc3710fb2f3bc154b0ff799",
+      "object": "senses",
+      "quote": "A selfish pursuit had cramped and narrowed me, until your gentleness and affection warmed and opened my senses; I became the same happy creature who, a few years ago, loved and beloved by all, had no ",
+      "relation": "stimulates cognitive processes",
+      "subject": "affection"
+     }
+    ]
+   }
+  },
+  {
+   "query": "consciousness",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "consciousness",
+    "results": []
+   }
+  },
+  {
+   "query": "interface",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "interface",
+    "results": [
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "id": "b758a8bf767dc78f2e75159053223c6ceb77f156d9609ab656f5910b60ac6324",
+      "object": "unnecessary attention",
+      "quote": "Good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself.",
+      "relation": "stimulates cognitive processes",
+      "subject": "user interface design"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "id": "b9123cc5b1eebf6e9b0538b031433bdafbbc3cc745209b805a77415a4e2b6c61",
+      "object": "finishing the task at hand",
+      "quote": "Good user interface design facilitates finishing the task at hand without drawing unnecessary attention to itself.",
+      "relation": "facilitates creative output",
+      "subject": "user interface design"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "id": "247f3d6fba0dd981fea4d38532f8869c4a69cbb6060d0b28fcdd053206878066",
+      "object": "successful applications",
+      "quote": "User interface design testing allows the designer to understand the reception of the design from the viewer's standpoint, and thus facilitates creating successful applications.",
+      "relation": "facilitates creative output",
+      "subject": "User interface design testing"
+     },
+     {
+      "file": "wikipedia-user-interface-design.txt",
+      "id": "b4628141ebae8d9e182acd32a3d616273cfb4507260fd89a0458c426591590df",
+      "object": "interface mockups",
+      "quote": "User-centered design is typically accomplished through the execution of modern design thinking, which involves assessing matters from the target audience's viewpoint, defining a problem statement, ide",
+      "relation": "facilitates creative output",
+      "subject": "design thinking"
+     }
+    ]
+   }
+  },
+  {
+   "query": "open source",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "open source",
+    "results": [
+     {
+      "file": "wikipedia-large-language-model.txt",
+      "id": "edc5b77f408d83bddfcd4ba6eb121193be14b73953389e467b2b91573904f389",
+      "object": "open-weight models",
+      "quote": "(2025), community-driven contributions to open-weight models improve their efficiency and performance via collaborative platforms such as Hugging Face.",
+      "relation": "enhances machine performance",
+      "subject": "community-driven contributions"
+     }
+    ]
+   }
+  },
+  {
+   "query": "Babbage",
+   "response": {
+    "ok": true,
+    "project": "Workshop",
+    "query": "Babbage",
+    "results": [
+     {
+      "file": "wikipedia-ada-lovelace.txt",
+      "id": "775dd2723a95a4244b0d5d1043349edd92ee87e561bca588a4d04ef3536aa522",
+      "object": "engines",
+      "quote": "In Babbage's world his engines were bound by number...What Lovelace saw...was that number could represent entities other than quantity.",
+      "relation": "enhances machine performance",
+      "subject": "number"
+     },
+     {
+      "file": "wikipedia-analytical-engine.txt",
+      "id": "46c346c6e30e3fe806d057dff908174d0158127e70ce6c9ae1d2bd6a567886c1",
+      "object": "algorithmic efficiency",
+      "quote": "Influence Predicted influence Babbage understood that the existence of an automatic computer would kindle interest in the field now known as algorithmic efficiency, writing in his Passages from the Li",
+      "relation": "drives innovation",
+      "subject": "analytical engine"
+     }
+    ]
+   }
+  }
+ ]
+}

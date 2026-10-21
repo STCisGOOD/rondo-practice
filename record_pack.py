@@ -52,15 +52,23 @@ MODEL = [
 SEARCH = ['Lovelace', 'chess', 'machine', 'creature', 'consciousness', 'interface', 'open source', 'Babbage']
 
 
-def call(method, path, body=None):
+def call(method, path, body=None, tries=3):
     data = json.dumps(body).encode('utf-8') if body is not None else None
-    req = urllib.request.Request(API + path, data=data, method=method, headers=HEADERS)
-    started = time.time()
-    try:
-        with urllib.request.urlopen(req, timeout=600) as r:
-            return json.loads(r.read().decode('utf-8')), time.time() - started
-    except urllib.error.HTTPError as e:
-        return json.loads(e.read().decode('utf-8')), time.time() - started
+    for attempt in range(1, tries + 1):
+        req = urllib.request.Request(API + path, data=data, method=method, headers=HEADERS)
+        started = time.time()
+        try:
+            with urllib.request.urlopen(req, timeout=600) as r:
+                return json.loads(r.read().decode('utf-8')), time.time() - started
+        except urllib.error.HTTPError as e:
+            return json.loads(e.read().decode('utf-8')), time.time() - started
+        except (ConnectionError, urllib.error.URLError) as e:
+            # A connection cut while Rondo is busy (for example refreshing its graph after
+            # reading) is retried; a third failure stops the recording.
+            print(f'  connection failed ({e}); attempt {attempt} of {tries}', flush=True)
+            if attempt == tries:
+                raise
+            time.sleep(10)
 
 
 info, _ = call('GET', '/')
