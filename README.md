@@ -35,7 +35,7 @@ RondoPractice.live = true   // or add ?rondo=live to the page address
 | `POST /ask-model` | `{"question": "..."}` | the AI model's own answer, without the files |
 | `GET /search?q=words` | | claims found in the files (subject, relation, object, quote, file) |
 | `POST /v1/chat/completions` | OpenAI chat request | the same answers in the OpenAI shape (`choices[0].message.content`); model `rondo` or `rondo-model` |
-| `POST /feedback` | `{"token": "...", "correct": true}` | right or wrong on an answer (real Rondo only) |
+| `POST /feedback` | `{"token": "...", "correct": true}` | right or wrong on an answer (every answer from the files has a `feedback_token`); the reply's `message` says whether Rondo's memory learned from it, and why not when it didn't. In practice mode it never does |
 
 In practice mode, a question is matched to the closest recorded one. A question with no close match
 gets a reply listing questions the pack can answer (`await RondoPractice.questions()`).

@@ -79,10 +79,26 @@ test('search, info, models and feedback answer like a real Rondo; bad requests a
   assert.equal(loose.results.length, 1, 'no recorded query matches closely, so recorded results are filtered by word')
   assert.equal((await (await window.fetch('http://localhost:7778/')).json()).project, 'Workshop')
   assert.equal((await (await window.fetch('http://localhost:7778/v1/models')).json()).data.length, 2)
-  assert.equal((await (await window.fetch('http://localhost:7778/feedback', { method: 'POST', body: '{"token":"x","correct":true}' })).json()).ok, true)
   assert.equal((await window.fetch('http://localhost:7778/ask', { method: 'POST', body: '{}' })).status, 400)
   assert.equal((await window.fetch('http://localhost:7778/v1/chat/completions', { method: 'POST', body: '{"stream":true,"messages":[{"role":"user","content":"x"}]}' })).status, 400)
   assert.equal((await window.fetch('http://localhost:7778/graph')).status, 404)
+})
+
+test('every answer from the files can be rated, and the rating says what a real Rondo would tell', async () => {
+  const { window } = page()
+  const ask = async (question, path = '/ask') => (await window.fetch('http://localhost:7778' + path, { method: 'POST', body: JSON.stringify({ question }) })).json()
+  const first = await ask('Who was Ada Lovelace?')
+  const second = await ask('How did the Mechanical Turk work?')
+  assert.ok(first.feedback_token && second.feedback_token && first.feedback_token !== second.feedback_token, 'each answer its own token')
+  assert.equal(first.learns_from_feedback, false)
+  assert.equal((await ask('Who was Ada Lovelace?', '/ask-model')).feedback_token, undefined, 'the model alone has nothing to rate')
+  assert.equal((await ask('What is the capital of Peru?')).feedback_token, undefined, 'nor does a refusal')
+  const rate = (body) => window.fetch('http://localhost:7778/feedback', { method: 'POST', body: JSON.stringify(body) })
+  const rated = await (await rate({ token: first.feedback_token, correct: false })).json()
+  assert.deepEqual([rated.ok, rated.correct, rated.learned, rated.why], [true, false, false, 'practice'])
+  assert.match(rated.message, /Practice mode/)
+  assert.equal((await rate({ correct: true })).status, 400, 'a token is needed')
+  assert.equal((await rate({ token: first.feedback_token })).status, 400, 'and right or wrong')
 })
 
 test('other sites are untouched, and live mode sends Rondo calls to the real Rondo', async () => {

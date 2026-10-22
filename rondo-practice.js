@@ -31,6 +31,7 @@
   const state = {
     live: /[?&]rondo=live\b/.test(String(window.location && window.location.search || '')),
     delay: 700,
+    answered: 0,
   }
 
   function load () {
@@ -85,8 +86,25 @@
   function answerFor (p, question, modelOnly) {
     const hit = closest(modelOnly ? p.model : p.ask, 'question', question)
     if (!hit) return noMatch(p, question, modelOnly ? 'model' : 'rondo')
-    return Object.assign({}, hit.record.response, {
+    const answer = Object.assign({}, hit.record.response, {
       question, practice: true, matched_question: hit.record.question,
+    })
+    // A real Rondo gives every answer from your files a token to rate it with.
+    if (!modelOnly && answer.ok === true) {
+      state.answered += 1
+      answer.feedback_token = 'practice-' + state.answered
+      answer.learns_from_feedback = false
+    }
+    return answer
+  }
+
+  function feedbackFor (body) {
+    const token = String((body && body.token) || '').trim()
+    if (!token) return reply(400, { ok: false, error: 'Send {"token": "...", "correct": true or false}, with the feedback_token an answer gave' })
+    if (typeof body.correct !== 'boolean') return reply(400, { ok: false, error: 'Say "correct": true or false' })
+    return reply(200, {
+      ok: true, correct: body.correct, learned: false, why: 'practice', practice: true,
+      message: "Practice mode: ratings aren't sent anywhere. On a real Rondo, this says whether its memory learned from the rating.",
     })
   }
 
@@ -173,9 +191,7 @@
       const modelOnly = String(body.model || '').trim() === MODEL_ONLY
       return reply(200, chatShape(answerFor(p, question, modelOnly), modelOnly))
     }
-    if (method === 'POST' && path === '/feedback') {
-      return reply(200, { ok: true, recorded: 'practice', learned: false, practice: true })
-    }
+    if (method === 'POST' && path === '/feedback') return feedbackFor(await readBody(input, init))
     return reply(404, { ok: false, error: "Rondo's local API has /, /ask, /ask-rondo, /ask-model, /feedback, /search, /v1/chat/completions and /v1/models" })
   }
 
